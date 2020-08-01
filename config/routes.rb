@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-
-  root 'homes#top'
+  
+  root 'home#top'
   get 'home/about'
   devise_for :customers
   resources :customers, only: [:show, :edit, :update]
