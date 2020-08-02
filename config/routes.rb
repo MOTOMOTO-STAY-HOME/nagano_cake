@@ -1,15 +1,14 @@
 Rails.application.routes.draw do
 
-  get 'customers/show'
-  get 'customers/edit'
+  #get"/customers"=> "customers#show,edit"がresouceとは別に存在していたので消しました。
   root 'home#top'
   get 'home/about'
   devise_for :customers
   resource :customers, only: [:show, :edit, :update]
-  get "/customers" => "customers#hide"
-  get "/customers/last_conform" => "customers#last_conform"
+  patch "/customers" => "customers#hide"#get=>patch
+  get "/customers/last_confirm" => "customers#last_confirm"#conform=>confirm
   resources :cart_products, only: [:index, :create, :update, :show]
-  get "/cart_products/:id" => "cart_products#reset"
+  delete "/cart_products/:id" => "cart_products#reset" #get=>delete
   resources :orders, only: [:new, :index, :show, :create]
   get "/orders/confirm" => "orders#confirm"
   get "/orders/thanks" => "orders#thanks"
@@ -21,7 +20,7 @@ Rails.application.routes.draw do
   namespace :admins do
     get 'home/top'
     resources :products, only: [:new, :index, :show, :edit, :create, :update]
-    get "/products/:id" => "products#hide"
+    patch "/products/:id" => "products#hide"#get=>patch
     resources :product_generes, only: [:index, :edit, :create, :update]
     resources :customers, only: [:index, :show, :edit, :update] do
       resources :orders, only: [:index, :show, :update] do
