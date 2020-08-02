@@ -65,3 +65,4 @@ gem 'refile', require: "refile/rails", git: 'git@github.com:refile/refile.git'
 gem 'refile-mini_magick'
 gem 'kaminari', '~> 1.2.1'
 gem 'bootstrap-sass', ">= 3.4.1"
+gem 'jquery-rails'

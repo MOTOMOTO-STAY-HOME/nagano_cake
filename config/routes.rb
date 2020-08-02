@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
   
+  get 'customers/show'
+  get 'customers/edit'
   root 'home#top'
   get 'home/about'
   devise_for :customers
-  resources :customers, only: [:show, :edit, :update]
+  resource :customers, only: [:show, :edit, :update]
   get "/customers" => "customers#hide"
   get "/customers/last_conform" => "customers#last_conform"
-  resource :cart_products, only: [:index, :create, :update, :show]
+  resources :cart_products, only: [:index, :create, :update, :show]
   get "/cart_products/:id" => "cart_products#reset"
   resources :orders, only: [:new, :index, :show, :create]
   get "/orders/confirm" => "orders#confirm"
@@ -15,7 +17,7 @@ Rails.application.routes.draw do
   resources :products, only: [:index, :show]
 
 
-  devise_for :admins
+  #devise_for :admins
   namespace :admins do
     get 'home/top'
     resources :products, only: [:new, :index, :show, :edit, :create, :update]
