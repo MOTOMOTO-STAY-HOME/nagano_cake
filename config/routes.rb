@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
-  
-  get 'customers/show'
-  get 'customers/edit'
+
   root 'home#top'
   get 'home/about'
-  devise_for :customers
+  devise_for :customers, controllers:{
+    registrations: 'customers/resistrations',
+    sessions: 'customers/sessions'
+  }
+
   resource :customers, only: [:show, :edit, :update]
   get "/customers" => "customers#hide"
   get "/customers/last_conform" => "customers#last_conform"
