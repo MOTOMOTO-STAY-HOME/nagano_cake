@@ -8,19 +8,12 @@ class CartProductsController < ApplicationController
 	end
 
 	def index
-		# @cartproducts = CartProduct.all
-		# @cartproduct = CartProduct.find(params[:id])
-		# @taxprice = @cartproduct*1.08
 	end
 
 	def destroy
 	end
 
 	def update
-		# @quantity = Quantity.find(params[:id])
-		# @quantity.update
-		# @subtotal = @taxprice*@quantity
-		# @total = @subtotal.all.sum(:price)
 	end
 
 	def reset
