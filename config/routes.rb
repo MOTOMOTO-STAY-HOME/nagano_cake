@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'product_genres/index'
+  get 'product_genres/show'
   #get"/customers"=> "customers#show,edit"がresouceとは別に存在していたので消しました。
   root 'home#top'
   get 'home/about'
