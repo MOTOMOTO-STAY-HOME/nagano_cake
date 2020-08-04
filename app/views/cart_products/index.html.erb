@@ -1,0 +1,69 @@
+<div class="container">
+
+	<div class="row">
+		<div class="col-xs-1"></div>
+		<div class="col-xs-4">
+			<h3>ショッピングカート</h3>
+		</div>
+		<div class="col-xs-4"></div>
+		<div class="col-xs-2">
+			<%= link_to 'カートを空にする', home_about_path, class: "btn btn-danger" %>
+		</div>
+		<div class="col-xs-1"></div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-1"></div>
+		<div class="col-xs-10">
+			<table border="1">
+				<tr>
+					<th>商品名</th>
+					<th>単価(税込)</th>
+					<th>数量</th>
+					<th>小計</th>
+					<th>　　　</th>
+				</tr>
+				<!-- <p>ここにeach文入れる</p> -->
+				<tr>
+					<td><p>商品画像・商品名</p></td>
+					<td><p>税込単価</p></td>
+					<td>
+						<!-- <p>ここにform_for 数量のフォームを挿入する為のもの</p> -->
+						<P>フォーム</P><%= submit_tag "変更", class: "btn btn-primary" %>
+					</td>
+					<td><%= @subtotal %></td>
+					<td><%= link_to '削除する', cart_products_path, method: :delete, class: "btn btn-danger" %></td>
+				</tr>
+			</table>
+		</div>
+		<div class="col-xs-1"></div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-1"></div>
+		<div class="col-xs-2">
+			<%= link_to '買い物を続ける', home_about_path, class: "btn btn-primary" %>
+		</div>
+		<div class="col-xs-4"></div>
+		<div class="col-xs-4">
+			<table border="1">
+				<tr>
+					<td>合計金額</td>
+					<td>　　　　</td>
+				</tr>
+			</table>
+		</div>
+		<div class="col-xs-1"></div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-4"></div>
+		<div class="col-xs-4">
+			<%= link_to '情報入力に進む', new_order_path, class: "btn btn-success" %>
+		</div>
+		<div class="col-xs-4"></div>
+	</div>
+
+</div>
+
+

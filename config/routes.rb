@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'product_genres/index'
+  get 'product_genres/show'
   #get"/customers"=> "customers#show,edit"がresouceとは別に存在していたので消しました。
   root 'home#top'
   get 'home/about'
@@ -16,18 +18,18 @@ Rails.application.routes.draw do
   resources :products, only: [:index, :show]
 
 
-  devise_for :admins
+  devise_for :admins, controllers:{
+    sessions: "admins/sessions",
+    passwords: "admins/passwords",
+    registrations: "admins/registrations"
+  }
   namespace :admins do
     get 'home/top'
     resources :products, only: [:new, :index, :show, :edit, :create, :update]
     patch "/products/:id" => "products#hide"#get=>patch
     resources :product_generes, only: [:index, :edit, :create, :update]
-    resources :customers, only: [:index, :show, :edit, :update] do
-      resources :orders, only: [:index, :show, :update] do
-        resources :order_products, only: [:update]
-      end
-    end
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :orders, only: [:index, :show, :update]
+    resources :order_products, only: [:update]
   end
-
 end
-
