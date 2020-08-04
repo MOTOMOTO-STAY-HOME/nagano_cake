@@ -1,0 +1,48 @@
+<h3>注文情報入力</h3>
+
+<div>
+
+	<%= form_for (@order_payment) do |f| %>
+		<span>支払方法</span>
+
+			<div>
+				<%=f.radio_button :payment_method, :クレジットカード %>
+				<%=f.label :クレジットカード %>
+			</div>
+
+			<div>
+				<%=f.radio_button :payment_method, :銀行振込 %>
+				<%=f.label :銀行振込 %>
+			</div>
+	<% end %>
+
+
+	<%= form_for (@ship_address) do |f| %>
+		<span>お届け先</span>
+
+			<div>
+				<%=f.radio_button :customer_id, :会員住所 %>
+				<%=f.label :ご自身の住所 %>
+				<div style="color:#0000FF">メモ：ここに会員の住所表示予定</div>
+			</div>
+
+			<div>
+				<%=f.radio_button :customer_id, :登録済住所から選択 %>
+				<%=f.label :登録済住所から選択 %>
+				<div style="color:#0000FF">メモ：ここに配送先テーブルに保存されている住所表示予定（セレクトボックスで）</div>
+			</div>
+
+			<div>
+				<%=f.radio_button :customer_id, :新しいお届け先 %>
+				<%=f.label :新しいお届け先 %>
+				<div style="display: inline-flex;"><div>郵便番号(ハイフンなし)</div><%= f.text_area :shipping_postal_code %></div><br>
+				<div style="display: inline-flex;"><div>住所</div><%= f.text_area :shipping_address %></div><br>
+				<div style="display: inline-flex;"><div>宛名</div><%= f.text_area :shipping_name %></div>
+			</div>
+
+			<div>
+				<%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
+			</div>
+		<% end %>
+
+</div>
