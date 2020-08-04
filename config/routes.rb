@@ -1,9 +1,28 @@
 Rails.application.routes.draw do
 
+  namespace :admins do
+    get 'orders/index'
+    get 'orders/show'
+  end
+  namespace :admins do
+    get 'customers/index'
+    get 'customers/show'
+    get 'customers/edit'
+  end
+  namespace :admins do
+    get 'products_genere/index'
+    get 'products_genere/edit'
+  end
+  namespace :admins do
+    get 'products/new'
+    get 'products/index'
+    get 'products/show'
+    get 'products/edit'
+  end
   #get"/customers"=> "customers#show,edit"がresouceとは別に存在していたので消しました。
   root 'home#top'
   get 'home/about'
-  # devise_for :customers
+  devise_for :customers
   resource :customers, only: [:show, :edit, :update]
   patch "/customers" => "customers#hide"#get=>patch
   get "/customers/last_confirm" => "customers#last_confirm"#conform=>confirm
@@ -34,4 +53,3 @@ Rails.application.routes.draw do
   end
 
 end
-
