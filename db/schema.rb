@@ -26,6 +26,14 @@ ActiveRecord::Schema.define(version: 2020_08_03_082750) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "cart_products", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "product_id"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "customers", force: :cascade do |t|
     t.string "last_name"
     t.string "first_name"
@@ -46,6 +54,17 @@ ActiveRecord::Schema.define(version: 2020_08_03_082750) do
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
 
+<<<<<<< HEAD
+  create_table "orders", force: :cascade do |t|
+    t.integer "customer_id"
+    t.string "shipping_name"
+    t.string "shipping_postal_code"
+    t.string "shipping_address"
+    t.integer "payment_method"
+    t.integer "total_price"
+    t.integer "order_status"
+    t.integer "postages_price"
+=======
 
 
   create_table "product_genres", force: :cascade do |t|
@@ -63,6 +82,7 @@ ActiveRecord::Schema.define(version: 2020_08_03_082750) do
     t.integer "no_tax_price"
     t.string "image_id"
     t.boolean "is_sold"
+>>>>>>> origin/develop
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
