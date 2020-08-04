@@ -1,5 +1,5 @@
 <div class= "col-xs-10 col-xs-offset-1">
-  <h4 class="col-xs-offset-1", style="padding-bottom: 10px;"><span style="background-color: #DDDDDD; padding: .3em;">　登録情報編集　</span></h4>
+  <h4 class="col-xs-offset-1", style="padding-bottom: 30px;"><span style="background-color: #DDDDDD; padding: .3em;">　登録情報編集　</span></h4>
 
   <div id= "errors_explanation">
     <% if @customer.errors.any? %>
@@ -50,8 +50,12 @@
     </div>
 
     <div class="active">
-      <%= f.submit "　編集内容を保存する　",class: "btn btn-primary col-xs-3 col-xs-offset-5" %>
+      <%= f.submit "　編集内容を保存する　",class: "btn btn-primary col-xs-3 col-xs-offset-3", style: "margin-top: 30px;" %>
     </div>
   <% end %>
+
+  <div>
+      <%= button_to "　退会する　", customers_last_confirm_path, method: :get, class: "btn btn-danger col-xs-2 col-xs-offset-3", style: "margin-top: 30px;"  %>
+  </div>
 
 </div>

@@ -1,22 +1,59 @@
-<!-- <p>注文情報確認画面（ECサイト側）</p> -->
-<h3>注文情報確認</h3>
-<table border="1">
-	<tr>
-		<th>商品名</th><th>単価(税込)</th><th>数量</th><th>小計</th>
-	</tr>
-	<tr>
-		<td>カートに入れた商品を反映させる</td>
-		<td>商品の単価を反映させる</td>
-		<td>数量反映させる</td>
-		<td>小計反映させる</td>
-	</tr>
-</table>
+<h3>注文履歴詳細</h3>
 
-<table border="1">
-	<tr><td>送料</td><td>800</td></tr>
-	<tr><td>商品合計</td><td>商品合計反映させる</td></tr>
-	<tr><td>請求金額</td><td>請求金額反映させる</td></tr>
-</table>
+<div>
+	<span>注文情報</span>
+	<table border="1">
+		<tr>
+			<td>注文日</td>
+			<td><%= order.created_at %></td>
+		</tr>
+		<tr>
+			<td>配送先</td>
+			<td>○○○</td>
+		</tr>
+		<tr>
+			<td>支払方法</td>
+			<td><%= order.payment_method %></td>
+		</tr>
+		<tr>
+			<td>ステータス</td>
+			<td><%= order.order_status %></td>
+		</tr>
+	</table>
+</div>
 
-<div style="display: inline-flex;"><span>支払い方法</span>new.html.erbで決めた支払い方法反映させる</div><br>
-<div style="display: inline-flex;"><span>お届け先</span>new.html.erbで決めたお届け先を反映させる</div>
+<div>
+	<span>請求情報</span>
+	<table border="1">
+		<tr>
+			<td>商品合計</td>
+			<td>○○○</td>
+		</tr>
+		<tr>
+			<td>配送料</td>
+			<td>800</td>
+		</tr>
+		<tr>
+			<td>ご請求額</td>
+			<td>○○○</td>
+		</tr>
+	</table>
+</div>
+
+<div>
+	<span>注文内容</span>
+	<table border="1">
+		<tr>
+			<th>商品</th>
+			<th>単価(税込)</th>
+			<th>個数</th>
+			<th>小計</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+</div>
