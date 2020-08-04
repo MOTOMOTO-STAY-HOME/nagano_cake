@@ -1,0 +1,2 @@
+module Admins::ProductsGenereHelper
+end
