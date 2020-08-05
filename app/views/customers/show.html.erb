@@ -3,8 +3,8 @@
 
 <div style="display: flex; text-align: row; align-items: baseline;">
 	<h4><strong>登録情報</strong></h4>
-	<%= button_to "　編集する　", edit_customers_path, method: :get, class: "btn btn-primary", style:"margin:0 10px 10px 35px;" %>
-	<%= button_to "　パスワードを変更する　", edit_customer_password_path, method: :get, class: "btn btn-primary", style:"margin:0 10px 10px 0;" %>
+	<%= link_to "　編集する　", edit_customers_path, class: "btn btn-primary", style:"margin:0 10px 10px 35px;" %>
+	<%= link_to "　パスワードを変更する　", edit_customer_password_path, class: "btn btn-primary", style:"margin:0 10px 10px 0;" %>
 </div>
 
 <table class="table table-bordered" style="margin: 10px 0;">
@@ -38,11 +38,11 @@
 
 <div style="display: flex; text-align: row; align-items: baseline; margin: 20px 0">
 	<h4><strong>配送先</strong></h4>
-	<%= button_to "　一覧を見る　", ships_path, method: :get, class: "btn btn-primary", style:"margin-left: 60px;" %>
+	<%= link_to "　一覧を見る　", ships_path, class: "btn btn-primary", style:"margin-left: 60px;" %>
 </div>
 
 <div style="display: flex; text-align: row; align-items: baseline;">
 	<h4><strong>注文履歴</strong></h4>
-	<%= button_to "　一覧を見る　", orders_path, method: :get, class: "btn btn-primary", style:"margin-left: 40px;" %>
+	<%= link_to "　一覧を見る　", orders_path, class: "btn btn-primary", style:"margin-left: 40px;" %>
 </div>
 

@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
-
-
-  get 'ships/index'
-  get 'ships/edit'
-
+  
   get 'product_genres/index'
   get 'product_genres/show'
   get "/orders/confirm" => "orders#confirm"

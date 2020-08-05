@@ -6,7 +6,7 @@
 	</p>
 
 	<div style="display: flex; justify-content: center;">
-		<%= button_to "　退会しない　", root_path, method: :get, class: "btn btn-primary", style: "margin: 30px 20px;"  %>
-		<%= button_to "　退会する　", customers_hide_path, method: :patch, class: "btn btn-danger", style: "margin: 30px 20px;"  %>
+		<%= link_to "　退会しない　", root_path, class: "btn btn-primary", style: "margin: 30px 20px;"  %>
+		<%= link_to "　退会する　", customers_hide_path, method: :patch, class: "btn btn-danger", style: "margin: 30px 20px;"  %>
 	</div>
 </div>
