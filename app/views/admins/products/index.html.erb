@@ -15,22 +15,22 @@
 			<tbody>
 		        <tr>
 		        	<% @products.each do |product| %>
-			            <td>
+			            <td class="panel-body">
 			              <%= product.id %>
 			            </td>
 			            <td>
 			              <%= product.name %>
 			            </td>
-			            <td>
+			            <td class="panel-body">
 			            <%= product.no_tax_price %>
 			            </td>
-			            <td>
+			            <td class="panel-body">
 			            <%= product.product_genre.name %>
 						</td>
-						<td>
+						<td class="panel-body">
 			            <%= product.is_sold %>
 						</td>
-					<!% end %>
+					<% end %>
 				</tr>
 			</tbody>
 		</table>

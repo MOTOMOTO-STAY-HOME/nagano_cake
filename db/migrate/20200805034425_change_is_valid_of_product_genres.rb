@@ -5,6 +5,6 @@ class ChangeIsValidOfProductGenres < ActiveRecord::Migration[5.2]
 
 
   def down
-    change_column ::product_genres, :is_valid, :boolean,
+    change_column :product_genres, :is_valid, :boolean
   end
 end

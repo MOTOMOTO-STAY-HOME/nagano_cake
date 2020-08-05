@@ -5,7 +5,6 @@ class ChangeIsSoldPuroducts < ActiveRecord::Migration[5.2]
 
 
   def down
-    change_column :products, :is_sold, :boolean,
+    change_column :products, :is_sold, :boolean
   end
-end
 end
