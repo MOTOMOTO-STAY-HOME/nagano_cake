@@ -1,2 +1,56 @@
-<h1>Admins::Customers#edit</h1>
-<p>Find me in app/views/admins/customers/edit.html.erb</p>
+<h1><%= @customer.name %>さんの会員情報編集</h1>
+<table class="table">
+
+  <tbody>
+    <tr>
+      <th>会員ID</th>
+      <th><%= @customer.id %></th>
+    </tr>
+    <tr>
+      <th>氏名</th>
+      <th>
+        <th><%= form_for(@customer) do |c| %>
+          <%= c.text_field :last_name %>
+          <%= c.text_field :first_name %>
+      </th>
+    </tr>
+    <tr>
+      <th>フリガナ</th>
+        <th<%= c.text_field :kana_last_name %>
+        <th<%= c.text_field :kana_first_name %>
+    </tr>
+    <tr>
+      <th>郵便番号</th>
+        <th<%= @customer.postal_code %>
+    </tr>
+    <tr>
+      <th>住所</th>
+        <th<%= @customer.address %>
+    </tr>
+    <tr>
+      <th>電話番号</th>
+        <th<%= @customer.phone %>
+    </tr>
+    <tr>
+      <th>メールアドレス</th>
+        <th<%= @customer.email%>
+    </tr>
+    <tr>
+    <th>会員ステータス</th>
+    <th>
+      <div class="field">
+        <%= form.check_box :is_active %>
+      </div>
+    </th>
+    <th>有効</th>
+    <th></th>
+    <th>退会済み</th>
+  </tr>
+
+  </tbody>
+
+    <%= c.submit "変更を保存する" %>
+  <% end %>
+</table>
+
+</div>

@@ -3,6 +3,8 @@ class Admins::ProductsController < ApplicationController
   end
 
   def index
+    @products = Product.all
+    # @genere = Genere.all
   end
 
   def show
