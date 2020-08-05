@@ -1,4 +1,4 @@
-class Admins::ProductsController < Admins::ApplicationControllerController
+class Admins::ProductsController < Admins::ApplicationController
   def new
   end
 
