@@ -1,2 +1,0 @@
-class ProductGenre < ApplicationRecord
-end
