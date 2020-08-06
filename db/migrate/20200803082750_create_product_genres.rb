@@ -1,8 +1,7 @@
 class CreateProductGenres < ActiveRecord::Migration[5.2]
   def change
-    create_table :products_genere do |t|
+    create_table :product_genres do |t|
       t.string :name
-      t.boolean :now_used
 
       t.timestamps
     end

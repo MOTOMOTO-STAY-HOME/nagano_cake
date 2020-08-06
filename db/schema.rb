@@ -10,10 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-
-ActiveRecord::Schema.define(version: 2020_08_05_010645) do
-
+ActiveRecord::Schema.define(version: 2020_08_06_084504) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -68,13 +65,6 @@ ActiveRecord::Schema.define(version: 2020_08_05_010645) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "product_genres", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean "is_valid", default: true
-  end
-
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.text "discription"
@@ -84,6 +74,13 @@ ActiveRecord::Schema.define(version: 2020_08_05_010645) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "product_genre_id"
+  end
+
+  create_table "products_genere", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "is_valid", default: true
   end
 
   create_table "ships", force: :cascade do |t|
