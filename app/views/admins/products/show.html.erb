@@ -1,55 +1,75 @@
-<table>
+<div class = container>
+	<div class = row>
 
-	<thead>
-		        <tr>
-			        <th style="border:none;"></th>
-			        <th style="border:none;"></th>
-		        </tr>
-			</thead>
+		<div class = 'col-xs-6'>
+		<%= attachment_image_tag @product, :image, :fill, 300, 300,  fallback: "no-image.jpg"%>
+		</div>
 
-			<tbody>
-		        	<% @products.each do |product| %>
-		        		<tr>
-				            <td class="panel-body">
-				              商品名
-				            </td>
-				            <td>
-				              <%= product.name %>
-				            </td>
-				        </tr>
-				        <tr>
-				            <td class="panel-body">
-				            商品説明
-				            </td>
-				            <td class="panel-body">
-				            <%= product.product_genre.name %>
+		<div class = 'col-xs-6'>
+			<table>
+				<thead>
+					<tr>
+						<th style="border:none;"></th>
+						<th style="border:none;"></th>
+					</tr>
+				</thead>
+
+				<tbody>
+						<tr>
+							<td class="panel-body">
+								商品名
+							</td>
+							<td>
+								<%= @product.name %>
 							</td>
 						</tr>
 						<tr>
-				            <td class="panel-body">
-				              ジャンル
-				            </td>
-				            <td>
-				              <%= product.name %>
-				            </td>
-				        </tr>
-				        <tr>
-				            <td class="panel-body">
-				              税込価格（税抜価格）
-				            </td>
-				            <td>
-				              <%= product.name %>
-				            </td>
-				        </tr>
-				        <tr>
-				            <td class="panel-body">
-				              販売ステータス
-				            </td>
-				            <td>
-				              <%= product.name %>
-				            </td>
-				        </tr>
-					<% end %>
-				</tr>
-			</tbody>
-</table>
+							<td class="panel-body">
+								商品説明
+							</td>
+							<td class="panel-body">
+								<%= @product.discription %>
+							</td>
+						</tr>
+						<tr>
+							<td class="panel-body">
+								ジャンル
+							</td>
+							<td>
+								<%= @product.product_genre.name %>
+							</td>
+						</tr>
+						<tr>
+							<td class="panel-body">
+								税込価格（税抜価格）
+							</td>
+							<td>
+								<%= (@product.no_tax_price * 1.1.to_f).ceil %>
+								(<%= @product.no_tax_price %>)円
+							</td>
+						</tr>
+						<tr>
+							<td class="panel-body">
+								販売ステータス
+							</td>
+							<td>
+								<% if @product.is_sold == true %>
+									<p>販売中</p>
+								<% else %>
+									<p>販売停止中</p>
+								<% end %>
+							</td>
+						</tr>
+						<tr>
+							<td>
+							</td>
+							<td>
+							<%= link_to "編集する", edit_admins_product_path(@product), class: "btn btn-primary" %>
+							</td>
+						</tr>
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+</div>

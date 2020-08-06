@@ -4,32 +4,36 @@ class Admins::ProductsController < ApplicationController
   	@products = Product.all
   end
 
-  def show
-  end
-
-  def edit
-  	@product = Product.find(params[:id])
-  	@product_genre = ProductGenre.all
-  end
-
   def new
     @product = Product.new
     @product_genre = ProductGenre.all
   end
 
   def create
-  	@product = Product.new(product_params)
-    @product_.save
+  	product = Product.new(product_params)
+    product.save
+    redirect_to admins_product_path(product.id)
   end
 
   def update
-  	@product = Product.new(product_params)
+  	product = Product.find(params[:id])
+    product.update(product_params)
+    redirect_to admins_product_path(product_params)
+  end
+
+  def show
+    @product = Product.find(params[:id])
+  end
+
+  def edit
+    @product = Product.find(params[:id])
+    @product_genre = ProductGenre.all
   end
 
 private
 
-  def Product_params
-     params.require(:product_params).permit(:id, :name, :discription, :no_tax_price, :image_id, :is_sold)
+  def product_params
+     params.require(:product).permit(:id, :product_genre_id, :name, :discription, :no_tax_price, :image, :is_sold)
   end
 
 end
