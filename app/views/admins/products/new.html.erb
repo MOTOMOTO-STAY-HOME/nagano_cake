@@ -1,2 +1,36 @@
-<h1>Admins::Products#new</h1>
-<p>Find me in app/views/admins/products/new.html.erb</p>
+<div class='container'>
+
+    <h2>商品新規登録</h2>
+
+        <%= form_for @product, url: admins_product_path do |f| %>
+        	<div class="field">
+                <%= f.attachment_field :image %>
+            </div>
+            <div class="field">
+                <h4>商品名</h4>
+                <%= f.text_field :name %>
+            </div>
+            <div class="field">
+                <h4>商品説明</h4>
+                <%= f.text_area :discription %>
+            </div>
+            <div class="field">
+                <h4>ジャンル</h4>
+                <%= f.collection_select :product_genre_id, @product_genre, :id, :name, include_blank: "-- 選択してください --" %>
+            </div>
+            <div class="field">
+                <h4>税抜価格</h4>
+                <%= f.text_area :no_tax_price %>
+                円
+            </div>
+            <div class="field">
+                <h4>販売ステータス</h4>
+                <%= f.select :is_sold, [['販売中', true], ['売り切れ', false]], include_blank: "-- 選択してください --" %>
+            </div>
+
+            <div class="actions">
+            <%= f.submit '新規登録' %>
+            </div>
+        <% end %>
+
+</div>

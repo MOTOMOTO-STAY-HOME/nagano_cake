@@ -1,2 +1,50 @@
-<h1>Admins::ProductsGenere#index</h1>
-<p>Find me in app/views/admins/products_genere/index.html.erb</p>
+<div class='col-xs-9'>
+	<h2>ジャンル一覧・追加</h2>
+
+	<%= form_for @product_genre, url: admins_products_genere_index_path do |f| %>
+	<div class="field">
+		<%= f.text_field :name %>
+	</div>
+	<div class="field">
+		<%= f.radio_button :is_valid, :true %>
+		<%= f.label :is_valid, "有効" %>
+		<%= f.radio_button :is_valid, :false %>
+		<%= f.label :is_valid, "無効" %>
+	</div>
+	<div class="actions">
+		<%= f.submit '追加' %>
+	</div>
+	<% end %>
+
+
+	<table class="panel panel-default">
+		<thead>
+			<tr>
+				<th class="panel-heading">ジャンル</th>
+				<th class="panel-heading">状態</th>
+				<th class="panel-heading"></th><!編集ボタン用>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr>
+				<% @product_genres.each do |product_genre| %>
+					<td class="panel-body">
+						<%= product_genre.name %>
+					</td>
+
+					<% if product_genre.is_valid == true %>
+						<td>
+							<p>有効</p>
+					<% else %>
+							<p>無効</p>
+						</td>
+					<% end %>
+					<td>
+						<%= link_to "編集する", edit_admins_products_genere_path(product_genre), class: "btn btn-success btn-xs" %>
+					</td>
+				<% end %>
+			</tr>
+		</tbody>
+	</table>
+</div>
