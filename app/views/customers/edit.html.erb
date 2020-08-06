@@ -1,2 +1,61 @@
-<h1>Customers#edit</h1>
-<p>Find me in app/views/customers/edit.html.erb</p>
+<div class= "col-xs-10 col-xs-offset-1">
+  <h4 class="col-xs-offset-1", style="padding-bottom: 30px;"><span style="background-color: #DDDDDD; padding: .3em;">　登録情報編集　</span></h4>
+
+  <div id= "errors_explanation">
+    <% if @customer.errors.any? %>
+      <h3><%= pluralize(@customer.errors.count, "error") %> prohibited this obj from being saved:</h3>
+      <% @customer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    <% end %>
+  </div>
+
+  <%= form_for(@customer, url: customers_path) do |f| %>
+    <%#= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="form-group sign-up-form">
+      <label class="col-xs-3">名前</label>
+      <%= f.label :last_name, "(姓)", class: "col-xs-1" %>
+      <%= f.text_field :last_name, autofocus: true, autocomplete: "姓", class: "form-inline col-xs-3" %>
+      <%= f.label :first_name, "(名)", class: "col-xs-1" %>
+      <%= f.text_field :first_name, autofocus: true, autocomplete: "名前", class: "form-inline col-xs-3" %>
+    </div>
+
+    <div class="form-group sign-up-form">
+      <label class="col-xs-3">フリガナ</label>
+      <%= f.label :kana_last_name, "(セイ)", class: "col-xs-1" %>
+      <%= f.text_field :kana_last_name, autofocus: true, autocomplete: "セイ", class: "form-inline col-xs-3" %>
+      <%= f.label :kana_first_name, "(メイ)", class: "col-xs-1" %>
+      <%= f.text_field :kana_first_name, autofocus: true, autocomplete: "メイ", class: "form-inline col-xs-3" %>
+    </div>
+
+    <div class="form-group sign-up-form">
+      <%= f.label :email, "メールアドレス", class: "col-xs-3" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "メールアドレス", class: "form-inline col-xs-7 col-xs-offset-1" %>
+    </div>
+
+    <div class="form-group sign-up-form">
+      <%= f.label :postal_code, "郵便番号(ハイフンなし)", class: "col-xs-3" %>
+      <%= f.text_field :postal_code, autofocus: true, autocomplete: "郵便番号", class: "form-inline col-xs-7 col-xs-offset-1" %>
+    </div>
+
+    <div class="form-group sign-up-form">
+      <%= f.label :address, "住所", class: "col-xs-3" %>
+      <%= f.text_field :address, autofocus: true, autocomplete: "住所", class: "form-inline col-xs-7 col-xs-offset-1" %>
+    </div>
+
+    <div class="form-group sign-up-form">
+      <%= f.label :phone, "電話番号(ハイフンなし)", class: "col-xs-3" %>
+      <%= f.text_field :phone, autofocus: true, autocomplete: "電話番号", class: "form-inline col-xs-7 col-xs-offset-1" %>
+    </div>
+
+    <div class="active">
+      <%= f.submit "　編集内容を保存する　", class: "btn btn-primary col-xs-3 col-xs-offset-3", style: "margin-top: 30px;" %>
+    </div>
+  <% end %>
+
+  <div>
+      <%= link_to "　退会する　", customers_last_confirm_path, class: "btn btn-danger col-xs-2 col-xs-offset-3", style: "margin-top: 30px;"  %>
+  </div>
+
+</div>

@@ -1,2 +1,48 @@
-<h1>Customers#show</h1>
-<p>Find me in app/views/customers/show.html.erb</p>
+<div class="col-xs-7">
+<h4 class="col-xs-offset-2", style="padding:60px 0 30px;"><span style="background-color: #DDDDDD; padding: .3em;">　マイページ　</span></h4>
+
+<div style="display: flex; text-align: row; align-items: baseline;">
+	<h4><strong>登録情報</strong></h4>
+	<%= link_to "　編集する　", edit_customers_path, class: "btn btn-primary", style:"margin:0 10px 10px 35px;" %>
+	<%= link_to "　パスワードを変更する　", edit_customer_password_path, class: "btn btn-primary", style:"margin:0 10px 10px 0;" %>
+</div>
+
+<table class="table table-bordered" style="margin: 10px 0;">
+	<tbody>
+		<tr>
+			<th class="active col-xs-2", style="height: 40px;">氏名</th>
+			<td class="col-xs-4"><%= @customer.last_name %>　<%= @customer.first_name %></td>
+		</tr>
+		<tr>
+			<th class="active", style="height: 40px;">カナ</th>
+			<td><%= @customer.kana_last_name %>　<%= @customer.kana_first_name %></td>
+		</tr>
+		<tr>
+			<th class="active", style="height: 40px;">郵便番号</th>
+			<td><%= @customer.postal_code %></td>
+		</tr>
+		<tr>
+			<th class="active", style="height: 40px;">住所</th>
+			<td><%= @customer.address %></td>
+		</tr>
+		<tr>
+			<th class="active", style="height: 40px;">電話番号</th>
+			<td><%= @customer.phone %></td>
+		</tr>
+		<tr>
+			<th class="active", style="height: 40px;">メールアドレス</th>
+			<td><%= @customer.email %></td>
+		</tr>
+	</tbody>
+</table>
+
+<div style="display: flex; text-align: row; align-items: baseline; margin: 20px 0">
+	<h4><strong>配送先</strong></h4>
+	<%= link_to "　一覧を見る　", ships_path, class: "btn btn-primary", style:"margin-left: 60px;" %>
+</div>
+
+<div style="display: flex; text-align: row; align-items: baseline;">
+	<h4><strong>注文履歴</strong></h4>
+	<%= link_to "　一覧を見る　", orders_path, class: "btn btn-primary", style:"margin-left: 40px;" %>
+</div>
+

@@ -27,7 +27,7 @@
 }
 
 .welcome-text{
-	margin-left: 150px;
+	margin-left: 130px;
 }
 
 .nav-list{
@@ -58,7 +58,16 @@
 	padding-bottom: 10px;
 
 	input{
-	border-radius: 5px;
+		border-radius: 5px;
+		height: 2.5em;
+	}
+}
+
+.ship-new-form{
+	padding-bottom: 30px;
+
+	input{
+		border-radius: 5px;
 		height: 2.5em;
 	}
 }

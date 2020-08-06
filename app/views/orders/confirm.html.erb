@@ -1,1 +1,61 @@
+<div class="container">
+
+	<div class="row">
+		<!-- <div class="col-xs-offset-1"> -->
+			<div class="col-xs-2">
+				<h3 class="bg-warning text-center">注文情報確認</h3>
+			</div>
+		<!-- </div> -->
+	</div>
+
+<div class="row">
+	<div class="col-xs-7">
+		<table align="left", border="1">
+			<tr class="bg-info">
+				<th style="padding-top: 10px; padding-bottom: 10px;">商品名</th>
+				<th>単価(税込)</th>
+				<th>数量</th>
+				<th>小計</th>
+			</tr>
+			<tr>
+				<td style="padding-top: 10px; padding-bottom: 10px;">カートに入れた商品を反映させる</td>
+				<td>商品の単価を反映させる</td>
+				<td>数量反映させる</td>
+				<td>小計反映させる</td>
+			</tr>
+		</table>
+	</div>
+
+
+	<div class="col-xs-4">
+		<table border="1" class="col-xs-offset-1">
+			<tr>
+				<td class="bg-info" style="padding-right:50px; padding-top:10px; padding-bottom:10px;">送料</td>
+				<td>800</td>
+			</tr>
+			<tr>
+				<td class="bg-info" style="padding-right:50px; padding-top:10px; padding-bottom:10px;">商品合計</td>
+				<td>商品合計反映させる</td>
+			</tr>
+			<tr>
+				<td class="bg-info" style="padding-right:50px; padding-top:10px; padding-bottom:10px;">請求金額</td>
+				<td>請求金額反映させる</td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+<div style="display: inline-flex; padding-top:40px">
+	<div style="padding-right:20px"><strong>支払い方法</strong></div>
+	<div>○○○○○○○○○○○○○</div>
+</div>
+<br>
+<div style="display: inline-flex; padding-top:40px">
+	<div style="padding-right:20px"><strong>お届け先</strong></div>
+	<div>○○○○○○○○○○○○○</div>
+</div>
+<br>
+<div align="center"><%= link_to '購入を確定する', orders_thanks_path, class:"btn btn-success" %></div>
+
+</div>
 
