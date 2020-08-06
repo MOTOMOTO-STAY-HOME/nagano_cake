@@ -1,11 +1,10 @@
 <div class=container>
 	<div class=row>
 
-
 		<div class='col-xs-12'>
 				<h3>ジャンル編集</h3>
 
-			<%= form_for @product_genre, url: admins_products_genere_path(@product_genre) do |f| %>
+			<%= form_for @product_genre, url: admins_product_genre_path(@product_genre) do |f| %>
 				<div class="field">
 					<%= f.text_field :name %>
 				</div>

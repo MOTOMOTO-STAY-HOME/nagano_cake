@@ -1,7 +1,7 @@
 <div class='col-xs-9'>
 	<h2>ジャンル一覧・追加</h2>
 
-	<%= form_for @product_genre, url: admins_products_genere_index_path do |f| %>
+	<%= form_for @product_genre, url: admins_product_genres_path do |f| %>
 	<div class="field">
 		<%= f.text_field :name %>
 	</div>
@@ -40,7 +40,7 @@
 						<% end %>
 					</td>
 					<td class="panel-body">
-						<%= link_to "編集する", edit_admins_products_genere_path(product_genre), class: "btn btn-success btn-xs" %>
+						<%= link_to "編集する", edit_admins_product_genre_path(product_genre), class: "btn btn-success btn-xs" %>
 					</td>
 				</tr>
 			<% end %>
