@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
 
+<<<<<<< HEAD
 
   get 'ships/index'
   get 'ships/edit'
 
   get 'products_genere/index'
   get 'products_genere/show'
+=======
+  get 'product_genres/index'
+  get 'product_genres/show'
+>>>>>>> 39eefc60eae2dcebb68e693ef6e41f5ab6c3d94c
   get "/orders/confirm" => "orders#confirm"
   get "/orders/thanks" => "orders#thanks"
   #get"/customers"=> "customers#show,edit"がresouceとは別に存在していたので消しました。
@@ -35,7 +40,7 @@ Rails.application.routes.draw do
     get 'home/top'
     resources :products, only: [:new, :index, :show, :edit, :create, :update]
     patch "/products/:id" => "products#hide"#get=>patch
-    resources :products_genere, only: [:index, :edit, :create, :update]
+    resources :product_genres, only: [:index, :edit, :create, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders, only: [:index, :show, :update]
     resources :order_products, only: [:update]

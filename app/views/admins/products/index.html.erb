@@ -1,37 +1,41 @@
  <div class='col-xs-9'>
-    <h2>商品一覧</h2>
-	    <table class="panel panel-default">
+ 	<h2>商品一覧</h2>
+ 	<table class="panel panel-default">
 
-			<thead>
-		        <tr>
-			        <th class="panel-heading">商品ID</th>
-			        <th class="panel-heading">商品名</th>
-			        <th class="panel-heading">税抜価格</th>
-			        <th class="panel-heading">ジャンル</th>
-			        <th class="panel-heading">ステータス</th>
-		        </tr>
-			</thead>
+ 		<thead>
+ 			<tr>
+ 				<th class="panel-heading">商品ID</th>
+ 				<th class="panel-heading">商品名</th>
+ 				<th class="panel-heading">税抜価格</th>
+ 				<th class="panel-heading">ジャンル</th>
+ 				<th class="panel-heading">ステータス</th>
+ 			</tr>
+ 		</thead>
 
-			<tbody>
-		        <tr>
-		        	<% @products.each do |product| %>
-			            <td class="panel-body">
-			              <%= product.id %>
-			            </td>
-			            <td>
-			              <%= product.name %>
-			            </td>
-			            <td class="panel-body">
-			            <%= product.no_tax_price %>
-			            </td>
-			            <td class="panel-body">
-			            <%= product.product_genre.name %>
-						</td>
-						<td class="panel-body">
-			            <%= product.is_sold %>
-						</td>
-					<% end %>
-				</tr>
-			</tbody>
-		</table>
-</div>
+ 		<tbody>
+ 			<% @products.each do |product| %>
+	 			<tr>
+	 				<td class="panel-body">
+	 					<%= product.id %>
+	 				</td>
+	 				<td>
+	 					<%= product.name %>
+	 				</td>
+	 				<td class="panel-body">
+	 					<%= product.no_tax_price %>
+	 				</td>
+	 				<td class="panel-body">
+	 					<%= product.product_genre.name %>
+	 				</td>
+	 				<td>
+		 				<% if product.is_sold == true %>
+		 					<p>販売中</p>
+		 				<% else %>
+		 					<p>販売停止中</p>
+		 				<% end %>
+	 				</td>
+	 			</tr>
+ 			<% end %>
+ 		</tbody>
+ 	</table>
+ </div>

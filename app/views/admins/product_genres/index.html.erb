@@ -1,7 +1,7 @@
 <div class='col-xs-9'>
 	<h2>ジャンル一覧・追加</h2>
 
-	<%= form_for @product_genre, url: admins_products_genere_index_path do |f| %>
+	<%= form_for @product_genre, url: admins_product_genres_path do |f| %>
 	<div class="field">
 		<%= f.text_field :name %>
 	</div>
@@ -27,24 +27,23 @@
 		</thead>
 
 		<tbody>
-			<tr>
-				<% @product_genres.each do |product_genre| %>
+			<% @product_genres.each do |product_genre| %>
+				<tr>
 					<td class="panel-body">
 						<%= product_genre.name %>
 					</td>
-
-					<% if product_genre.is_valid == true %>
-						<td>
+					<td class="panel-body">
+						<% if product_genre.is_valid == true %>
 							<p>有効</p>
-					<% else %>
+						<% else %>
 							<p>無効</p>
-						</td>
-					<% end %>
-					<td>
-						<%= link_to "編集する", edit_admins_products_genere_path(product_genre), class: "btn btn-success btn-xs" %>
+						<% end %>
 					</td>
-				<% end %>
-			</tr>
+					<td class="panel-body">
+						<%= link_to "編集する", edit_admins_product_genre_path(product_genre), class: "btn btn-success btn-xs" %>
+					</td>
+				</tr>
+			<% end %>
 		</tbody>
 	</table>
 </div>

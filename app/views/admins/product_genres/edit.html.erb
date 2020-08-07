@@ -1,0 +1,23 @@
+<div class=container>
+	<div class=row>
+
+		<div class='col-xs-12'>
+				<h3>ジャンル編集</h3>
+
+			<%= form_for @product_genre, url: admins_product_genre_path(@product_genre) do |f| %>
+				<div class="field">
+					<%= f.text_field :name %>
+				</div>
+				<div class="field">
+					<%= f.radio_button :is_valid, :true %>
+					<%= f.label :is_valid, "有効" %>
+					<%= f.radio_button :is_valid, :false %>
+					<%= f.label :is_valid, "無効" %>
+				</div>
+				<div class="actions">
+					<%= f.submit '変更を保存する' %>
+				</div>
+				<% end %>
+		</div>
+	</div>
+</div>
