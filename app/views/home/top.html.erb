@@ -1,4 +1,73 @@
+<div class='col-xs-3'>
+	<%= render 'product_genres/sidebar', product_genres: @product_genres %>
+</div>
 
+<div class="col-xs-9">
+	<div class= "col-xs-12">
+		<div class="col-xs-11">
+			<div style= "border: 1.5px solid #777777; width: 90%; height: 330px; display: flex; align-items: center; justify-content: center; margin: 1.5em 0;">
+				<div style= "border: 1.5px solid #777777; width: 75%; height: 200px; display: flex; align-items: center; justify-content: center; ">
+				<p style="font-size: 18px;">
+					ようこそ、NaganoCakeへ！<br>
+					このサイトは、ケーキ販売のECサイトになります。<br>
+					会員でない方も商品の閲覧はできますが、<br>
+					購入には会員登録が必要になります。
+				</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div style="margin: 60px 0 5px 30px;">
+		<%# if @products.exists? %>
+			<h3><strong>オススメ商品</strong></h3>
+			<div style= "display: flex; justify-content: space-between;">
+
+				<div>
+					<%= link_to "#" do %>
+						<%= image_tag "tart.jpg", alt: "タルト", size: '190x140', style: "margin: 10px 0 20px;"  %>
+					<p><strong>いちごのタルト</strong></p>
+					<% end %>
+					<p><strong>¥500</strong></p>
+				</div>
+				<div>
+					<%= link_to "#" do %>
+						<%= image_tag "tart.jpg", alt: "タルト", size: '190x140', style: "margin: 10px 0 20px;"  %>
+					<p><strong>いちごのタルト</strong></p>
+					<% end %>
+					<p><strong>¥500</strong></p>
+				</div>
+				<div>
+					<%= link_to "#" do %>
+						<%= image_tag "tart.jpg", alt: "タルト", size: '190x140', style: "margin: 10px 0 20px;"  %>
+					<p><strong>いちごのタルト</strong></p>
+					<% end %>
+					<p><strong>¥500</strong></p>
+				</div>
+				<div>
+					<%= link_to "#" do %>
+						<%= image_tag "tart.jpg", alt: "タルト", size: '190x140', style: "margin: 10px 0 20px;"  %>
+					<p><strong>いちごのタルト</strong></p>
+					<% end %>
+					<p><strong>¥500</strong></p>
+				</div>
+
+			</div>
+
+			<%# @products.each do |product| %>
+				<%#div>
+					<%= link_to "#" do %>
+						<%#= attachment_image_tag product, :image, :fill, 190, 140, format: 'jpeg', falback: "no_image.jpeg", size:'190x140', style: "margin: 10px 0 20px;" %>
+						<%#p><strong><%#= product.name %><%#/strong></p>
+					<%# end %>
+					<%#p>¥<%#= product.no_tax_price %></p>
+				<%#/div>
+			<% end %>
+		<%# end %>
+		<div class= "deco-link" style="text-align: right;">
+				<%= link_to "もっと見る>", products_path %>
+		</div>
+	</div>
+</div>
 
 
 
