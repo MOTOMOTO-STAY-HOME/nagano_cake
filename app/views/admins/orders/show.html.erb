@@ -1,2 +1,34 @@
-<h1>Admins::Orders#show</h1>
-<p>Find me in app/views/admins/orders/show.html.erb</p>
+<table>
+  <h2>注文履歴詳細</h2>
+  <thead>
+    <tr>
+      <th>購入者</th>
+      <th>@order.last_name</th>
+      <th>@order.first_name</th>
+    </tr>
+    <tbody>
+      <tr>
+        <td class="panel-body">配送先</td>
+        <td>〒<%= @order.shipping_postal_code %>
+              <%= @order.shipping_address %>
+        </td>
+      </tr>
+      <tr>
+        <td class="panel-body"></td>
+        <td><%= @order.shipping_name %></td>
+      </tr>
+      <tr>
+        <td class="panel-body"></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="panel-body"></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="panel-body"></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </thead>
+</table>
