@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NaganoCake</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header class="navbar">
+      <div class="container">
+        <nav class="nav navbar-nav navbar-left site-title">
+          <h1>ながのCAKE(仮)</h1>
+        </nav>
+        <nav class="nav-inc-text">
+          <% if customer_signed_in? %>
+            <p class="navbar-text welcome-text">ようこそ、 <%=current_customer.last_name %>  <%= current_customer.first_name %> さん！</p>
+          <% end %>
+          <ul class="nav nav-pills navbar-right nav-list">
+            <% if customer_signed_in? %>
+              <li role="presentation", class="nav-list-item"><%= link_to "マイページ", customers_path %></li>
+              <li role="presentation", class="nav-list-item"><%= link_to "商品一覧", products_path %></li>
+              <li role="presentation", class="nav-list-item"><%= link_to "カート", cart_products_path %></li>
+              <li role="presentation", class="nav-list-item"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
+            <% elsif admin_signed_in? %>
+              <li role="presentation", class="nav-list-item"><%= link_to "商品一覧", admins_products_path  %></li>
+              <li role="presentation", class="nav-list-item"><%= link_to "会員一覧", admins_customers_path  %></li>
+              <li role="presentation", class="nav-list-item"><%= link_to "注文履歴一覧", admins_orders_path %></li>
+              <li role="presentation", class="nav-list-item"><%= link_to "ジャンル一覧", admins_product_generes_path %></li>
+              <li role="presentation", class="nav-list-item"><%= link_to "ログアウト", destroy_admin_session_path %></li>
+            <% else %>
+              <li role="presentation", class="nav-list-item"><%= link_to "About", home_about_path %></li>
+              <li role="presentation", class="nav-list-item"><%= link_to "商品一覧", products_path %></li>
+              <li role="presentation", class="nav-list-item"><%= link_to "新規登録", new_customer_registration_path, data: { "turbolinks": false } %></li>
+              <li role="presentation", class="nav-list-item"><%= link_to "ログイン", new_customer_session_path %></li>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+    </header>
+      <div class="container">
+        <div class="row">
+          <% flash.each do |message_type, message| %>
+            <%= content_tag(:div, message, class:"alert alert-#{message_type}") %>
+          <% end %>
+          <%= yield %>
+        </div>
+      </div>
+    <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
+  </body>
+</html>
