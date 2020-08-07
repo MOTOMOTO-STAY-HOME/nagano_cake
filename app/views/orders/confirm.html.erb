@@ -11,6 +11,7 @@
 <div class="row">
 	<div class="col-xs-7">
 		<table align="left", border="1">
+			<%= @order.each do |order| %>
 			<tr class="bg-info">
 				<th style="padding-top: 10px; padding-bottom: 10px;">商品名</th>
 				<th>単価(税込)</th>
@@ -18,10 +19,10 @@
 				<th>小計</th>
 			</tr>
 			<tr>
-				<td style="padding-top: 10px; padding-bottom: 10px;">カートに入れた商品を反映させる</td>
-				<td>商品の単価を反映させる</td>
-				<td>数量反映させる</td>
-				<td>小計反映させる</td>
+				<td style="padding-top: 10px; padding-bottom: 10px;"><%= order.cartproduct.name %></td>
+				<td><%= order.cartproduct.no_tax_price * 1.1 %></td>
+				<td><%= order.cartproduct.quantity %></td>
+				<td><%= (order.cartproduct.no_tax_price * 1.1) * (order.cartproduct.quantity)</td>
 			</tr>
 		</table>
 	</div>
