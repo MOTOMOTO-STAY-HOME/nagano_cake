@@ -1,16 +1,7 @@
 Rails.application.routes.draw do
 
-<<<<<<< HEAD
-
-  get 'ships/index'
-  get 'ships/edit'
-
-  get 'products_genere/index'
-  get 'products_genere/show'
-=======
   get 'product_genres/index'
   get 'product_genres/show'
->>>>>>> 39eefc60eae2dcebb68e693ef6e41f5ab6c3d94c
   get "/orders/confirm" => "orders#confirm"
   get "/orders/thanks" => "orders#thanks"
   #get"/customers"=> "customers#show,edit"がresouceとは別に存在していたので消しました。
