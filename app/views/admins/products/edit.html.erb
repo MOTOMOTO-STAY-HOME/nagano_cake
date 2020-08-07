@@ -1,7 +1,7 @@
 <div class='container'>
 
 	<h2>商品編集</h2>
-	    <%= form_for @product do |f| %>
+	    <%= form_for @product, url: admins_product_path(@product) do |f| %>
 	    	<div class="field">
 	            <%= f.attachment_field :image %>
 	        </div>
