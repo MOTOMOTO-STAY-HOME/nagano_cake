@@ -7,9 +7,6 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_params)
-    @order.save
-    redirect_to orders_confirm_path
   end
 
   def index
