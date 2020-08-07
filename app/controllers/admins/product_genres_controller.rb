@@ -1,4 +1,4 @@
-class Admins::ProductsGenereController < ApplicationController
+class Admins::ProductGenresController < ApplicationController
   def index
   	@product_genres = ProductGenre.all
   	@product_genre = ProductGenre.new
@@ -13,7 +13,7 @@ class Admins::ProductsGenereController < ApplicationController
   def update
   	product_genre = ProductGenre.find(params[:id])
     product_genre.update(product_genre_params)
-    redirect_to admins_products_genere_index_path(product_genre_params)
+    redirect_to admins_product_genres_path(product_genre_params)
   end
 
   def edit
@@ -24,7 +24,7 @@ class Admins::ProductsGenereController < ApplicationController
 	private
 
 	def product_genre_params
-		 params.require(:product_genre).permit(:name, :is_valid)
+		params.require(:product_genre).permit(:name, :is_valid)
 	end
 
 end

@@ -2,7 +2,7 @@
 
     <h2>商品新規登録</h2>
 
-        <%= form_for @product, url: admins_product_path do |f| %>
+        <%= form_for @product, url: admins_products_path(@product) do |f| %>
         	<div class="field">
                 <%= f.attachment_field :image %>
             </div>
