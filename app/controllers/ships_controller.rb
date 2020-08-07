@@ -14,7 +14,7 @@ class ShipsController < ApplicationController
   		flash[:success]= "新しい配送先が登録されました。"
   		redirect_to ships_url
   	else
-  		flash.now[:danger]= "必須事項を正しく入力してください。"
+  		flash.now[:danger]= "必須項目を正しく入力してください。"
   		@ships = Ship.where(customer_id: current_customer.id).page(params[:page]).reverse_order
   		render :index
   	end
@@ -30,7 +30,7 @@ class ShipsController < ApplicationController
   		flash[:success]= "配送先が変更されました。"
   		redirect_to ships_url
   	else
-  		flash.now[:danger]= "必須事項を正しく入力してください。"
+  		flash.now[:danger]= "必須項目を正しく入力してください。"
   		render :edit
   	end
   end

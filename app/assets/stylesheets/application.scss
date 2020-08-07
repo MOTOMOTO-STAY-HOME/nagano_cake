@@ -47,19 +47,9 @@
 }
 
 
-.sign-up-form{
-	padding-bottom: 40px;
-
+.customer-form{
 	input{
-		border-radius: 5px;
-		height: 2.5em;
-	}
-}
-
-.login-form{
-	padding-bottom: 10px;
-
-	input{
+		border: solid 1.5px #444444;
 		border-radius: 5px;
 		height: 2.5em;
 	}
@@ -69,7 +59,14 @@
 	padding-bottom: 30px;
 
 	input{
+		border: solid 1.5px #444444;
 		border-radius: 5px;
 		height: 2.5em;
 	}
+}
+
+.ship-name-form{
+	border: solid 1.5px #444444;
+	border-radius: 5px;
+	height: 2.5em;
 }
