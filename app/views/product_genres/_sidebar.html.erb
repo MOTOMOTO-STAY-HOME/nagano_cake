@@ -1,11 +1,17 @@
-<table>
-	<h4>ジャンル検索</h4>
+<table class="panel panel-default">
+	<thead>
+		<tr>
+			<th class="panel-heading"><h4>ジャンル検索</h4></th>
+		</tr>
+ 	</thead>
+	<tbody>
 		<% product_genres.each do |product_genre| %>
-		<tbody>
 		    <tr>
-		     <th><%= product_genre.name %></th>
+			    <td class="panel-body">
+			    	<!%= link_to product_genre.name,質問①  %>
+			    	<%= product_genre.name %>
+			    </td>
 		    </tr>
-		</tbody>
 		<% end %>
-		<br>
+	</tbody>
 </table>
