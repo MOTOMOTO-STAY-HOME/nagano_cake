@@ -1,2 +1,25 @@
-<h1>ProductGenres#index</h1>
-<p>Find me in app/views/product_genres/index.html.erb</p>
+<div class="container">
+    <div class="row">
+
+
+	<div class="col-xs-3">
+	    <%= render 'product_genres/sidebar', product_genres: @product_genres %>
+	</div>
+
+	    	<div class="col-xs-9">
+	        	<div class="row">
+					<h2><%= @product_genre.name %>一覧</h2><h6>全<%= @product.count %>件</h6>
+				</div>
+
+				<div class="row">
+					<% @product.each do |product| %>
+						<div class="col-sm-4 col-xs-4">
+							<p><%= attachment_image_tag product, :image, :fill, 100, 100,  fallback: "no-image.jpg"%></p>
+							<p><%= product.name %></p>
+							<p>￥<%= product.no_tax_price %></p>
+						</div>
+					<% end %>
+				</div>
+	</div>
+</div>
+

@@ -1,7 +1,49 @@
-<div class='container'>
-	<div class='row'>
-		<h2><%= product.name %></h2>
-		<%= product.image_id %>
-		<%= product.no_tax_price %>
+<div class = container>
+	<div class = row>
+
+		<div class = 'col-xs-6'>
+		<%= attachment_image_tag @product, :image, :fill, 300, 300,  fallback: "no-image.jpg"%>
+		</div>
+
+		<div class = 'col-xs-6'>
+			<table>
+				<thead>
+					<tr>
+						<th style="border:none;"></th>
+					</tr>
+				</thead>
+
+				<tbody>
+						<tr>
+							<td>
+								<%= @product.name %>
+							</td>
+						</tr>
+						<tr>
+							<td class="panel-body">
+								<%= @product.discription %>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								¥<%= (@product.no_tax_price * 1.1.to_f).ceil %>
+								(税込)円
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<!%= form_for @product, url: admins_product_path(@product) do |f| %>
+							            <!h4>販売ステータス</h4>
+							            <!%= f.collection_select :product_genre_id, @product_genre, :id, :name, include_blank: "個数選択" %>
+							            <!div class="actions">
+									    	<!%= f.submit 'カートに入れる' %>
+									    <!/div>
+							      <!% end %>
+							</td>
+						</tr>
+				</tbody>
+			</table>
+		</div>
+
 	</div>
 </div>

@@ -1,7 +1,9 @@
-class Admins::ProductsController < ApplicationController
+class Admins::ProductsController < Admins::ApplicationController
+
+  PER = 10
 
   def index
-  	@products = Product.all
+  	@products = Product.page(params[:page]).per(PER)
   end
 
   def new
