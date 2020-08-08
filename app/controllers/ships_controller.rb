@@ -40,7 +40,7 @@ class ShipsController < ApplicationController
   	redirect_to ships_path
   end
 
-  		protected
+  		private
 
     		def ship_params
     			params.require(:ship).permit(:name, :postal_code, :address)

@@ -17,13 +17,18 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+a{
+	text-decoration: none;
+	color: #000000;
+
+	&:hover{
+		text-decoration: none;
+	}
+}
+
 
 .site-title{
 	margin-top: 30px;
-
-	a{
-		text-decoration: none;
-	}
 }
 
 .nav-inc-text{
@@ -48,7 +53,6 @@
 		color: #444444;
 	}
 }
-
 
 .sign-up-form{
 	padding-bottom: 40px;
@@ -75,4 +79,9 @@
 		border-radius: 5px;
 		height: 2.5em;
 	}
+}
+
+.deco-link a{
+	text-decoration: underline;
+	color:  #0000ff;
 }
