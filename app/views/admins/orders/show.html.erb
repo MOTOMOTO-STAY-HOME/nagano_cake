@@ -26,10 +26,6 @@
         <% form_with url:admins_order_products_path, method: :patch local: true do |os| %>
         <td class="field"><%= os.select :order_status, Order.order_statuses.keys.to_a, {} %></td>
       </tr>
-      <tr>
-        <td class="panel-body"></td>
-        <td></td>
-      </tr>
     </tbody>
   </thead>
 </table>

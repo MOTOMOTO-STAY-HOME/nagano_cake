@@ -4,18 +4,24 @@
 <table class="panel panel-default">
   <thead>
     <tr>
-      <th class="panel-heading"></th>
-      <th class="panel-heading"></th>
-      <th class="panel-heading"></th>
-      <th class="panel-heading"></th>
+      <th class="panel-heading">購入日時</th>
+      <th class="panel-heading">購入者</th>
+      <th class="panel-heading">注文個数</th>
+      <th class="panel-heading">注文ステータス</th>
     </tr>
   </thead>
   <tbody>
+<% @orders.each do |o| %>
     <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>
+        <% link_to admins_order_show_path do %>
+        <%= o.created_at %>
+        <% end %>
+      </td>
+      <td><%= o.last_name %><%= o.first_name %></td>
+      <td><%= Order_products.where(order_id: o.id).sum(:quantity) %></td>
+      <td><%= o.order_status %></td>
     </tr>
+    <% end %>
   </tbody>
 </table>
