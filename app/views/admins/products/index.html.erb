@@ -13,29 +13,32 @@
  		</thead>
 
  		<tbody>
- 			<% @products.each do |product| %>
-	 			<tr>
-	 				<td class="panel-body">
-	 					<%= product.id %>
-	 				</td>
-	 				<td>
-	 					<%= product.name %>
-	 				</td>
-	 				<td class="panel-body">
-	 					<%= product.no_tax_price %>
-	 				</td>
-	 				<td class="panel-body">
-	 					<%= product.product_genre.name %>
-	 				</td>
-	 				<td>
-		 				<% if product.is_sold == true %>
-		 					<p>販売中</p>
-		 				<% else %>
-		 					<p>販売停止中</p>
-		 				<% end %>
-	 				</td>
-	 			</tr>
- 			<% end %>
+	 			<% @products.each do |product| %>
+		 			<tr>
+		 				<td class="panel-body">
+		 					<%= product.id %>
+		 				</td>
+		 				<td>
+		 					<%= product.name %>
+		 				</td>
+		 				<td class="panel-body">
+		 					<%= product.no_tax_price %>
+		 				</td>
+		 				<td class="panel-body">
+		 					<%= product.product_genre.name %>
+		 				</td>
+		 				<td>
+			 				<% if product.is_sold == true %>
+			 					<p>販売中</p>
+			 				<% else %>
+			 					<p>販売停止中</p>
+			 				<% end %>
+		 				</td>
+		 			</tr>
+	 			<% end %>
+	 		<tr>
+ 				<%= paginate @products %>
+ 			</tr>
  		</tbody>
  	</table>
  </div>
