@@ -1,17 +1,27 @@
-<div class='col-xs-3'>
-    <%= render 'product_genres/sidebar', product_genres: @product_genres %>
-</div>
+<div class="container">
+    <div class="row">
 
-	<div class='col-xs-9'>
-		<h2>商品一覧</h2><h6>(全X件)</h6>
 
-		<div class='col-xs-3'>
-			<% @products.each do |product| %>
-			<%= attachment_image_tag product, :image, :fill, 100, 100,  fallback: "no-image.jpg"%>
-				<%= product.name %>
-				<p>￥<%= product.no_tax_price %></p>
-			<% end %>
+		<div class="col-xs-3">
+		    <%= render 'product_genres/sidebar', product_genres: @product_genres %>
 		</div>
+
+		    	<div class="col-xs-9">
+			        	<div class="row">
+							<h2>商品一覧</h2><h6>(全<%= @products.count %>件)</h6>
+						</div>
+
+					<div class="row">
+							<% @products.each do |product| %>
+								<div class="col-sm-4 col-xs-4">
+									<!%= link_to product_path(product) do %>
+										<%= attachment_image_tag product, :image, :fill, 100, 100,  fallback: "no-image.jpg"%>
+									<!% end %>
+										<p><%= product.name %></p>
+										<p>￥<%= product.no_tax_price %></p>
+								</div>
+							<% end %>
+						<%= paginate @products %>
+					</div>
+				</div>
 	</div>
-
-

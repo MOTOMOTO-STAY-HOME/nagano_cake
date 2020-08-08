@@ -77,7 +77,6 @@ ActiveRecord::Schema.define(version: 2020_08_07_041252) do
 
   create_table "product_genres", force: :cascade do |t|
     t.string "name"
-    t.boolean "now_used"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "is_valid", default: true
