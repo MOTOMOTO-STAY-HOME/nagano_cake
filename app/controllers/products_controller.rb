@@ -1,7 +1,9 @@
 class ProductsController < ApplicationController
+	PER = 9
+
 	def index
-		@products = Product.all
-		@product_genres = ProductGenre.all
+		@products = Product.page(params[:page]).per(PER)
+		@product_genres = ProductGenre.where(is_valid:  true)
 	end
 
 	def show
