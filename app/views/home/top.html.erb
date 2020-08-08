@@ -18,54 +18,27 @@
 		</div>
 	</div>
 	<div style="margin: 60px 0 5px 30px;">
-		<%# if @products.exists? %>
+		<% if @products.exists? %>
 			<h3><strong>オススメ商品</strong></h3>
-			<div style= "display: flex; justify-content: space-between;">
-
-				<div>
-					<%= link_to "#" do %>
-						<%= image_tag "tart.jpg", alt: "タルト", size: '190x140', style: "margin: 10px 0 20px;"  %>
-					<p><strong>いちごのタルト</strong></p>
-					<% end %>
-					<p><strong>¥500</strong></p>
-				</div>
-				<div>
-					<%= link_to "#" do %>
-						<%= image_tag "tart.jpg", alt: "タルト", size: '190x140', style: "margin: 10px 0 20px;"  %>
-					<p><strong>いちごのタルト</strong></p>
-					<% end %>
-					<p><strong>¥500</strong></p>
-				</div>
-				<div>
-					<%= link_to "#" do %>
-						<%= image_tag "tart.jpg", alt: "タルト", size: '190x140', style: "margin: 10px 0 20px;"  %>
-					<p><strong>いちごのタルト</strong></p>
-					<% end %>
-					<p><strong>¥500</strong></p>
-				</div>
-				<div>
-					<%= link_to "#" do %>
-						<%= image_tag "tart.jpg", alt: "タルト", size: '190x140', style: "margin: 10px 0 20px;"  %>
-					<p><strong>いちごのタルト</strong></p>
-					<% end %>
-					<p><strong>¥500</strong></p>
-				</div>
-
+			<div style= "display: flex;">
+				<% @products.each do |product| %>
+					<div>
+						<%= link_to product_path(product.id) do %>
+							<%= attachment_image_tag product, :image, :fill, 190, 140, format: 'jpeg', style: "margin: 10px 10px 20px 0;", fallback: "no-image.jpg", size: "190x140" %>
+							<p><strong><%= product.name %></strong></p>
+						<% end %>
+						<p>¥<%= product.no_tax_price %></p>
+					</div>
+				<% end %>
 			</div>
-
-			<%# @products.each do |product| %>
-				<%#div>
-					<%= link_to "#" do %>
-						<%#= attachment_image_tag product, :image, :fill, 190, 140, format: 'jpeg', falback: "no_image.jpeg", size:'190x140', style: "margin: 10px 0 20px;" %>
-						<%#p><strong><%#= product.name %><%#/strong></p>
-					<%# end %>
-					<%#p>¥<%#= product.no_tax_price %></p>
-				<%#/div>
-			<% end %>
-		<%# end %>
-		<div class= "deco-link" style="text-align: right;">
-				<%= link_to "もっと見る>", products_path %>
-		</div>
+			<div class= "deco-link" style="text-align: right;">
+				<%= link_to "もっと見る >", products_path %>
+			</div>
+		<% else %>
+			<div class= "deco-link" style="text-align: right;">
+				<%= link_to "商品一覧はこちら >", products_path %>
+			</div>
+		<% end %>
 	</div>
 </div>
 

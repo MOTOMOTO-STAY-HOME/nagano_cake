@@ -7,7 +7,7 @@ class Admins::ProductGenresController < ApplicationController
   def create
   	product_genre= ProductGenre.new(product_genre_params)
   	product_genre.save
-    redirect_to admins_products_genere_index_path
+    redirect_to admins_product_genres_path
   end
 
   def update
