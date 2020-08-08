@@ -14,12 +14,12 @@ Rails.application.routes.draw do
   }
   patch "/customers/hide" => "customers#hide", as: 'customers/hide' #get=>patch
   get "/customers/last_confirm" => "customers#last_confirm"#conform=>confirm
-  resources :cart_products, only: [:index, :create, :update, :show]
-  delete "/cart_products/:id" => "cart_products#reset" #get=>delete
+  resources :cart_products, only: [:index, :create, :update, :destroy] #destroy追加show削除
+  delete "/cart_products/reset/:id" => "cart_products#reset" #get=>delete#destroyと同じURLになってしまうので編集
   resources :orders, only: [:new, :index, :show, :create]
 
-  get "/orders/confirm" => "orders#confirm"
-  get "/orders/thanks" => "orders#thanks"
+  # get "/orders/confirm" => "orders#confirm" #上部に移動済みの為削除
+  # get "/orders/thanks" => "orders#thanks" #上部に移動済みの為削除
   resources :ships, only: [:index, :create, :edit, :update, :destroy]
   resources :products, only: [:index, :show]
   devise_for :admins, controllers:{
