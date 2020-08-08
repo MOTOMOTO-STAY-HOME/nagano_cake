@@ -14,12 +14,12 @@
 <% @orders.each do |o| %>
     <tr>
       <td>
-        <% link_to admins_order_show_path do %>
+        <% link_to admins_order_path(o.id) do %>
         <%= o.created_at %>
         <% end %>
       </td>
-      <td><%= o.last_name %><%= o.first_name %></td>
-      <td><%= Order_products.where(order_id: o.id).sum(:quantity) %></td>
+      <td><%= o.customer.last_name %><%= o.customer.first_name %></td>
+      <td><%= OrderProduct.where(order_id: o.id).sum(:quantity) %></td>
       <td><%= o.order_status %></td>
     </tr>
     <% end %>

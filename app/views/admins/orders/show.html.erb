@@ -3,8 +3,8 @@
   <thead>
     <tr>
       <th>購入者</th>
-      <th><% @order.last_name %></th>
-      <th><% @order.first_name %></th>
+      <th><% @order.customer.last_name %></th>
+      <th><% @order.customer.first_name %></th>
     </tr>
     <tbody>
       <tr>
@@ -23,9 +23,15 @@
       </tr>
       <tr>
         <td class="panel-body">注文ステータス</td>
-        <% form_with url:admins_order_products_path, method: :patch local: true do |os| %>
-        <td class="field"><%= os.select :order_status, Order.order_statuses.keys.to_a, {} %></td>
+        <% form_with(model: @order, url:admins_order_path(@order.id), method: :patch, local: true) do |os| %>
+        <td class="field">
+          <%= os.select :order_status, Order.order_statuses.keys, :selected=>Order.order_statuses[@order.order_status] %>
+        </td>
+        <% end %>
       </tr>
     </tbody>
+
+    <%= render 'admins/orders/order_products_list', order: @order %>
+
   </thead>
 </table>
