@@ -21,11 +21,13 @@ a{
 	text-decoration: none;
 	color: #000000;
 
-.site-title{
-	margin-top: 30px;
 	&:hover{
 		text-decoration: none;
 	}
+}
+
+.site-title{
+	margin-top: 30px;
 }
 
 
@@ -74,7 +76,6 @@ a{
 		height: 2.5em;
 	}
 }
-
 
 .deco-link a{
 	text-decoration: underline;
