@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
 	end
 
 	def create
-		#cart_product= Cart_product.new(cart_product_params)
+		#cart_product= Cart_product.new(cart_product_params)☆
 	  	#cart_product.save
 	    #redirect_to cart_products_path
 	end
