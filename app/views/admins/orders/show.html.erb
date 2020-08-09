@@ -1,37 +1,37 @@
 <table>
   <h2>注文履歴詳細</h2>
-  <thead>
+  <tbody>
     <tr>
-      <th>購入者</th>
-      <th><% @order.customer.last_name %></th>
-      <th><% @order.customer.first_name %></th>
+      <th class="panel-body">購入者</th>
+      <td><%= @order.customer.last_name %></td>
+      <td><%= @order.customer.first_name %></td>
     </tr>
-    <tbody>
       <tr>
-        <td class="panel-body">配送先</td>
+        <th class="panel-body">配送先</th>
         <td>〒<%= @order.shipping_postal_code %>
               <%= @order.shipping_address %>
         </td>
       </tr>
       <tr>
-        <td class="panel-body"></td>
+        <th class="panel-body"></th>
         <td><%= @order.shipping_name %></td>
       </tr>
       <tr>
-        <td class="panel-body">支払方法</td>
+        <th class="panel-body">支払方法</th>
         <td><%= @order.payment_method %></td>
       </tr>
       <tr>
-        <td class="panel-body">注文ステータス</td>
-        <% form_with(model: @order, url:admins_order_path(@order.id), method: :patch, local: true) do |os| %>
+        <th class="panel-body">注文ステータス</th>
+        <%= form_for @order, url: admins_order_path(@order.id) do |os| %>
         <td class="field">
-          <%= os.select :order_status, Order.order_statuses.keys, :selected=>Order.order_statuses[@order.order_status] %>
+          <%= os.select :order_status, Order.order_statuses.keys.to_a %>
         </td>
+        <td btn btn-primary> <%= os.submit "更新" %> </td>
+        <%# if 注文ステータスが2ならform関連する注文商品全て製作ステータス==3 %>
+        <% if @order_status==2 %>
+        <% from_for @order_product, url:  admins_order_product_path() %>
         <% end %>
       </tr>
     </tbody>
-
-    <%= render 'admins/orders/order_products_list', order: @order %>
-
-  </thead>
+    <%= render 'admins/order_products/order_products_list', order: @order %>
 </table>
