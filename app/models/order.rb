@@ -1,4 +1,6 @@
 class Order < ApplicationRecord
+	attr_accessor :ship
+	
 	has_many :order_products
 	belongs_to :customer
 

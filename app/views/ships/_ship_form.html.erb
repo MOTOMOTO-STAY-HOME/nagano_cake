@@ -1,11 +1,11 @@
 <div class="form-group ship-new-form">
   <%= f.label :postal_code, "郵便番号(ハイフンなし)", class: "col-xs-2" %>
-  <%= f.text_field :postal_code, autofocus: true, autocomplete: "郵便番号", class: "form-inline col-xs-3", name: "zip", onKeyUp: "AjaxZip3.zip2addr(this,'','address','address');" %>
+  <%= f.text_field :postal_code, autofocus: true, autocomplete: "郵便番号", class: "form-inline col-xs-3" %>
 </div>
 
 <div class="form-group ship-new-form">
   <%= f.label :address, "住所", class: "col-xs-2" %>
-  <%= f.text_field :address, autofocus: true, autocomplete: "住所", class: "form-inline col-xs-6", name:"address" %>
+  <%= f.text_field :address, autofocus: true, autocomplete: "住所", class: "form-inline col-xs-6" %>
 </div>
 
 <div class="form-group">

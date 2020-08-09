@@ -18,10 +18,12 @@
 				<th>小計</th>
 			</tr>
 			<tr>
-				<td style="padding-top: 10px; padding-bottom: 10px;"></td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<% @cart_products.each do |cart_product| %>
+					<td style="padding-top: 10px; padding-bottom: 10px;"><%= cart_product.product.name %></td>
+					<td><%= cart_product.product.no_tax_price %></td>
+					<td><%= cart_product.quantity %></td>
+					<td><%= cart_product.include_tax_price %></td>
+				<% end %>
 			</tr>
 		</table>
 	</div>
@@ -31,11 +33,11 @@
 		<table border="1" class="col-xs-offset-1">
 			<tr>
 				<td class="bg-info" style="padding-right:50px; padding-top:10px; padding-bottom:10px;">送料</td>
-				<td>800</td>
+				<td><%= postages_price %></td>
 			</tr>
 			<tr>
 				<td class="bg-info" style="padding-right:50px; padding-top:10px; padding-bottom:10px;">商品合計</td>
-				<td>商品合計反映させる</td>
+				<td></td>
 			</tr>
 			<tr>
 				<td class="bg-info" style="padding-right:50px; padding-top:10px; padding-bottom:10px;">請求金額</td>
@@ -47,12 +49,12 @@
 
 <div style="display: inline-flex; padding-top:40px">
 	<div style="padding-right:20px"><strong>支払い方法</strong></div>
-	<div>○○○○○○○○○○○○○</div>
+	<div><%= @order.payment_method %></div>
 </div>
 <br>
 <div style="display: inline-flex; padding-top:40px">
 	<div style="padding-right:20px"><strong>お届け先</strong></div>
-	<div>○○○○○○○○○○○○○</div>
+	<div><%= @order_address %></div>
 </div>
 <br>
 <div align="center"><%= link_to '購入を確定する', orders_thanks_path, class:"btn btn-success" %></div>
