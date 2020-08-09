@@ -8,8 +8,9 @@
 		<% product_genres.each do |product_genre| %>
 		    <tr>
 			    <td class="panel-body">
-			    	<!%= link_to product_genre.name,質問①  %>
-			    	<%= product_genre.name %>
+			    	<%= link_to genre_path(product_genre) do %>
+			    		<%= product_genre.name %>
+			    	<% end %>
 			    </td>
 		    </tr>
 		<% end %>
