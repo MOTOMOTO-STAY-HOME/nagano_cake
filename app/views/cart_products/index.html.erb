@@ -7,7 +7,7 @@
 		</div>
 		<div class="col-xs-4"></div>
 		<div class="col-xs-2">
-			<%= link_to 'カートを空にする', home_about_path, class: "btn btn-danger" %>
+			<%= link_to 'カートを空にする', cart_products_reset_path, method: :delete, class: "btn btn-danger" %>
 		</div>
 		<div class="col-xs-1"></div>
 	</div>
@@ -23,21 +23,20 @@
 					<th>小計</th>
 					<th>　　　</th>
 				</tr>
-				<% total_price = 0%>
-					<% @cartproducts.each do |c| %>
+				<% @cart_products.each do |cart_product| %>
 				<tr>
-					<td><%= c.product.name %></td>
-					<td><%= c.product.no_tax_price %></td>
-				<% total_price += (c.product.no_tax_price * c.quantity)%>
-					<%= form_for c do |ca| %>
+					<td><%= cart_product.product.name %></td>
+					<td><%= cart_product.include_tax_unit_price %></td>
 					<td>
-						<%= ca.number_field :quantity %>
-						<%= ca.submit "変更", class: "btn btn-primary" %>
+						<%= form_for cart_product do |f| %>
+							<%= f.number_field :quantity %>
+							<%= f.submit "変更", class: "btn btn-primary" %>
+						<% end %>
 					</td>
-					<td><%= c.product.no_tax_price * c.quantity %></td>
-					<td><%= link_to '削除する', cart_product_path(c), method: :delete, class: "btn btn-danger" %></td>
-					<% end %>
-
+					<td><%= cart_product.include_tax_total_price %></td>
+					<td>
+						<%= link_to '削除する', cart_product_path(cart_product.id), method: :delete, class: "btn btn-danger" %>
+					</td>
 				</tr>
 				<% end %>
 			</table>
@@ -48,14 +47,14 @@
 	<div class="row">
 		<div class="col-xs-1"></div>
 		<div class="col-xs-2">
-			<%= link_to '買い物を続ける', products_path, class: "btn btn-primary" %>
+				<%= link_to '買い物を続ける', products_path, class: "btn btn-primary" %>
 		</div>
 		<div class="col-xs-4"></div>
 		<div class="col-xs-4">
 			<table border="1">
 				<tr>
 					<td>合計金額</td>
-					<td><%= (total_price * 1.1.to_f).ceil %></td>
+					<td><%= @total_price %></td>
 				</tr>
 			</table>
 		</div>
@@ -65,7 +64,9 @@
 	<div class="row">
 		<div class="col-xs-4"></div>
 		<div class="col-xs-4">
-			<%= link_to '情報入力に進む', new_order_path, class: "btn btn-success" %>
+			<% if @cart_products.exists? %>
+				<%= link_to '情報入力に進む', new_order_path, class: "btn btn-success" %>
+			<% end %>
 		</div>
 		<div class="col-xs-4"></div>
 	</div>
