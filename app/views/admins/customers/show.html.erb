@@ -1,40 +1,45 @@
 <div>
-<h1><%= @customer %>さんの会員詳細</h1>
-<table class="table">
+<h4 class="col-xs-offset-1", style="padding-bottom: 30px;"><span style="background-color: #DDDDDD; padding: .3em;"><%= @customer.full_name %>さんの会員詳細</span></h4>
+<h1></h1>
+<table>
   <tbody>
     <tr>
-      <th>顧客ID</th>
-      <th><%= @customer.id %></th>
-      <th><%= @customer.is_active %></th>
+      <th class="active col-xs-2", style="height: 40px;">顧客ID</th>
+      <th style="width: 1px;"><%= @customer.id %></th>
+      <% if @customer.is_active == true %>
+      <th><span class="label label-primary">有効会員</span></th>
+      <% else %>
+      <th><span class="label label-danger">退会済み</span></th>
+      <% end %>
     </tr>
     <tr>
-      <th>氏名</th>
+      <th class="active col-xs-2", style="height: 40px;">氏名</th>
       <th><%= @customer.last_name %><%= @customer.first_name %></th>
     </tr>
     <tr>
-      <th>フリガナ</th>
+      <th class="active col-xs-2", style="height: 40px;">フリガナ</th>
       <th><%= @customer.kana_last_name %><%= @customer.kana_first_name %></th>
     </tr>
     <tr>
-      <th>郵便番号</th>
+      <th class="active col-xs-2", style="height: 40px;">郵便番号</th>
       <th><%= @customer.postal_code %></th>
     </tr>
     <tr>
-      <th>住所</th>
+      <th class="active col-xs-2", style="height: 40px;">住所</th>
       <th><%= @customer.address %></th>
     </tr>
     <tr>
-      <th>電話番号</th>
+      <th class="active col-xs-2", style="height: 40px;">電話番号</th>
       <th><%= @customer.phone %></th>
     </tr>
     <tr>
-      <th>メールアドレス</th>
+      <th class="active col-xs-3", style="height: 40px;">メールアドレス</th>
       <th><%= @customer.email %></th>
     </tr>
   </tbody>
-  <%= link_to "編集する", edit_admins_customer_path %>
-  <%= link_to "注文履歴一覧を見る", admins_orders_path %>
 </table>
+  <%= link_to "編集する", edit_admins_customer_path, class: "btn btn-primary" %>
+  <%= link_to "注文履歴一覧を見る", admins_orders_path, class: "btn btn-primary"  %>
 
 
 

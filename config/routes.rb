@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
-  get "product_genres/:id" => "product_genres#index"#ジャンルのサイドバーからジャンル検索する際にidが必要なので変更しました。
-  get 'product_genres/show'
+  get "product_genres/:id" => "product_genres#show", as: "genre"#indexページは部分テンプレートのsidebarと同じ役割なので、showページのみ残しました。
 
   post "/orders/confirm" => "orders#confirm"
   get "/orders/thanks" => "orders#thanks"

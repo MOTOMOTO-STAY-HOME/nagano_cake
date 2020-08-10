@@ -61,6 +61,7 @@ class OrdersController < ApplicationController
   def thanks
   end
 
+
     private
       def ship_params
         params.require(:ship).permit(:name, :postal_code, :address)
