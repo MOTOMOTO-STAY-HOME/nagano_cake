@@ -5,11 +5,7 @@
   <tbody>
     <tr>
       <th class="active col-xs-2", style="height: 40px;">顧客ID</th>
-      <% if @customer.id == "true" %>
-      <th style="width: 1px;">有効</th>
-      <% else %>
-      <th style="width: 1px;">退会済み</th>
-      <% end %>
+      <th style="width: 20px;"><%= @customer.id %></th>
       <% if @customer.is_active == true %>
       <th><span class="label label-primary">有効会員</span></th>
       <% else %>

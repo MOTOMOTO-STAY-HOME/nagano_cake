@@ -1,6 +1,9 @@
 class Admins::OrdersController < Admins::ApplicationController
+
+  PER = 10
+
   def index
-    @orders = Order.all
+    @orders = Order.all.page(params[:page]).per(PER)
   end
 
   def show
@@ -12,16 +15,19 @@ class Admins::OrdersController < Admins::ApplicationController
   end
 
   def update
-    @order_product = OrderProduct.find(params[:id])
     @order =Order.find(params[:id])
+    @order_product = OrderProduct.find_by(order_id: @order.id)
     if @order.update(order_params)
+
+      @order_product.production_status.each do |product|
+        if @order.order_status == "入金確認"
+          product = "製作待ち"
+          @order_product.save
+        end
+      end
+
       redirect_back(fallback_location: admins_order_path(@order.id))
       flash[:notice] = "注文ステータスを更新しました。"
-
-      if @order.order_status == "入金確認"
-        @order_product.production_status = "製作待ち"
-        @order_product.save
-      end
 
     else
       render "show"
