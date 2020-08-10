@@ -13,7 +13,12 @@ class CartProductsController < ApplicationController
 	end
 
 	def index
-		@cart_products = CartProduct.where(customer_id: current_customer.id).page(params[:page]).reverse_order
+		@cart_products = CartProduct.where(customer_id: current_customer.id)
+		#.page(params[:page]).reverse_order
+		@total_price =0
+		@cart_products.each do |cart_product|
+			@total_price += cart_product.product.no_tax_price
+		end
 	end
 
 	def update

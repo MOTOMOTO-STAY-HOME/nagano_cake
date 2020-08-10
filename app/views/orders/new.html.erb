@@ -42,23 +42,7 @@
 			</div>
 		</div>
 
-		<div>
-			<%= radio_button_tag("r2","address 3") %>
-			<%= label_tag("r3_radio_3","新しいお届け先") %>
-			<div style="display: inline-flex;">
-				<div>郵便番号(ハイフンなし)</div>
-				<%= text_area_tag :shipping_postal_code %>
-			</div><br>
-			<div style="display: inline-flex;">
-				<div>住所</div>
-				<%= text_area_tag :shipping_address %>
-			</div><br>
-			<div style="display: inline-flex;">
-				<div>宛名</div>
-				<%= text_area_tag :shipping_name %>
-			</div>
-		</div>
-		<div>
+		
 				<%= submit_tag "確認画面へ進む",{url:orders_confirm_path, class: "btn btn-primary"} %>
 		</div>
 	<% end %>

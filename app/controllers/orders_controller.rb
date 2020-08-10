@@ -38,9 +38,12 @@ class OrdersController < ApplicationController
     @order = current_customer.orders.create(order_params)
     @order_product = OrderProduct.new
     current_customer.cart_products.each do |cart_product|
+      @order_product = OrderProduct.new
       @order_product = @order.order_products.new(product_id: cart_product.product.id, quantity: cart_product.quantity, unit_price: cart_product.product.no_tax_price)
     end
-    @ship = current_customer.ships.create(ship_params)
+    if @ship
+      @ship = current_customer.ships.create(ship_params)
+    end
     if @order_product.save
       current_customer.cart_products.destroy_all
       redirect_to orders_thanks_url

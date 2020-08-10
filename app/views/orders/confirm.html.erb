@@ -64,13 +64,13 @@
 		<div><%= @order.shipping_name %></div>
 	</div>
 
-	<%# if params[:order][:ship] == "new_address" %>
+	<% if params[:order][:ship] == "new_address" %>
 		<%= fields_for @ship do |ship| %>
 			<%= ship.hidden_field :postal_code, value: @order.shipping_postal_code %>
 			<%= ship.hidden_field :address, value: @order.shipping_address %>
 			<%= ship.hidden_field :name, value: @order.shipping_name %>
 		<% end %>
-	<%# end %>
+	<% end %>
 
 <br>
 <div align="center"><%= f.submit '購入を確定する', class:"btn btn-success" %></div>
