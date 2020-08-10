@@ -13,7 +13,11 @@
     <header class="navbar", style="background-color: #ff9933; padding-bottom: 30px;">
       <div class="container">
         <nav class="nav navbar-nav navbar-left site-title">
+          <% if admin_signed_in %>
+          <a href = "<%= admins_home_top_path %>"><h1 style= "color: #ffffff;"><strong>NaganoCake</strong></h1></a>
+          <% else %>
           <a href = "<%= root_path %>"><h1 style= "color: #ffffff;"><strong>NaganoCake</strong></h1></a>
+          <% end %>
         </nav>
         <nav class="nav-inc-text">
           <% if customer_signed_in? %>
