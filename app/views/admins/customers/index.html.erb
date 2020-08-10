@@ -1,35 +1,31 @@
-<h1>会員一覧</h1>
-<body>
-  <div class="body">
-    <div class="container">
-      <div class="row">
-      <thead>
-          <th>会員ID</th>
-          <th>氏名</th>
-          <th>メールアドレス</th>
-          <th>ステータス</th>
-        </thead>
-        <tbody>
-          <% @customers.each do |c| %>
-          <tr>
-            <td>
-              <%= c.id %>
-            </td>
-            <td>
-              <%= link_to admins_customer_path(c) do %>
-              <%= c.last_name%>
-              <% end %>
-            </td>
-            <td>
-              <%= c.email %>
-            </td>
-            <td>
-              <%= c.is_active%>
-            </td>
-          </tr>
+<h4 class="col-xs-offset-1", style="padding-bottom: 30px;"><span style="background-color: #DDDDDD; padding: .3em;">会員一覧</span></h4>
+<div class="col-xs-8">
+  <table class="table table-bordered" style="margin: 40px 0;">
+    <thead>
+      <th class="active", style="height: 40px; width: 15%">会員ID</th>
+      <th class="active", style="height: 40px; width: 20%">氏名</th>
+      <th class="active", style="height: 40px; width: 30%">メールアドレス</th>
+      <th class="active", style="height: 40px; width: 15%">ステータス</th>
+    </thead>
+    <tbody>
+      <% @customers.each do |c| %>
+      <tr>
+        <td>
+          <%= c.id %>
+        </td>
+        <td>
+          <%= link_to admins_customer_path(c) do %>
+          <%= c.full_name%>
           <% end %>
-        </tbody>
-      </div>
-    </div>
-  </div>
-</body>
+        </td>
+        <td>
+          <%= c.email %>
+        </td>
+        <td>
+          <%= c.is_active%>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

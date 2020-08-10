@@ -14,11 +14,12 @@
 					<div class="row">
 							<% @products.each do |product| %>
 								<div class="col-sm-4 col-xs-4">
-									<!%= link_to product_path(product) do %>
+									<%= link_to product_path(product) do %>
 										<%= attachment_image_tag product, :image, :fill, 100, 100,  fallback: "no-image.jpg"%>
-									<!% end %>
+									<% end %>
 										<p><%= product.name %></p>
-										<p>￥<%= product.no_tax_price %></p>
+										<p>￥<%= (product.no_tax_price * 1.1.to_f).ceil%></p>
+										<! 詳細画面に飛んだ時用に税込み価格に統一しました。>
 								</div>
 							<% end %>
 						<%= paginate @products %>
