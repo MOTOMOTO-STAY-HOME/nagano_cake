@@ -31,6 +31,12 @@ Product.create!(
   no_tax_price: "1000",
   product_genre_id: 1,
 )
+Product.create!(
+  name: "test_cookie",
+  discription: "koreha_tesuto",
+  no_tax_price: "1000",
+  product_genre_id: 1,
+)
 Ship.create!(
   customer_id: 1,
   name: "test_granma",
@@ -53,4 +59,11 @@ OrderProduct.create!(
   quantity: 3,
   production_status: 0,
   unit_price: 3000,
+)
+OrderProduct.create!(
+  order_id: 1,
+  product_id: 2,
+  quantity: 2,
+  production_status: 0,
+  unit_price: 1000,
 )

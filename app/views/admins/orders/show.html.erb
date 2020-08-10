@@ -31,9 +31,11 @@
           <%= os.select :order_status, Order.order_statuses.keys.to_a %>
         </td>
         <td btn btn-primary> <%= os.submit "更新", class: "btn btn-primary" %> </td>
-        <%# if 注文ステータスが2ならform関連する注文商品全て製作ステータス==3 %>
-        <%# <% if @order_status==2 %> %>
-        <%# <% from_for @order_product, url:  admins_order_product_path() %> %>
+        <%# if 一つでも製作ステータスが2ならform注文ステータス==3 %>
+        <% if @production_status==2 %>
+        <% from_for @order_product, url:  admins_order_path(@order) |f| %>
+        <% form_tag(admins_order_path(@order), method: "patch") %>
+        <% end %>
         <% end %>
       </tr>
     </tbody>
