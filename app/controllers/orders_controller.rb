@@ -31,18 +31,16 @@ class OrdersController < ApplicationController
     @order.total_price = 0
     @cart_products.each do |cart_product|
       @order.total_price += cart_product.include_tax_total_price
-      #@amount_price = @order.total_price + @order.postages_price
     end
  end
 
-
   def create
     @order = current_customer.orders.create(order_params)
-    @order_product = OrderProduct.new(order_product_params)
-    @order_product.order_id = @order.id
-    if @ship
-      @ship = current_customer.ships.create(ship_params)
+    @order_product = OrderProduct.new
+    current_customer.cart_products.each do |cart_product|
+      @order_product = @order.order_products.new(product_id: cart_product.product.id, quantity: cart_product.quantity, unit_price: cart_product.product.no_tax_price)
     end
+    @ship = current_customer.ships.create(ship_params)
     if @order_product.save
       current_customer.cart_products.destroy_all
       redirect_to orders_thanks_url
@@ -70,10 +68,6 @@ class OrdersController < ApplicationController
 
       def order_params
         params.require(:order).permit(:customer_id, :shipping_name, :shipping_postal_code, :shipping_address, :payment_method, :total_price, :postages_price)
-      end
-
-      def order_product_params
-        params.require(:order_product).permit(:order_id, :product_id, :quantity, :unit_price)
       end
 
       def have_cart_product
