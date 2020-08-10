@@ -2,53 +2,50 @@
 
 <div>
 
-	<%= form_with(model: @order, local: true, method: :get, url: {action: 'confirm'})  do |f| %>
+	<%= form_with(model: @order, local: true, url: {action: 'confirm'})  do |f| %>
 		<span>支払方法</span>
 
 			<div>
-				<%=f.radio_button :payment_method, :クレジットカード %>
-				<%=f.label :クレジットカード %>
+				<%= f.radio_button :payment_method, "クレジットカード", checked: true %>
+				<%= f.label :payment_method, :クレジットカード %>
 			</div>
 
 			<div>
-				<%=f.radio_button :payment_method, :銀行振込 %>
-				<%=f.label :銀行振込 %>
+				<%= f.radio_button :payment_method, "銀行振込" %>
+				<%= label :payment_method, :銀行振込 %>
 			</div>
 
 		<span>お届け先</span>
 
 			<div>
-				<%= radio_button_tag("ship", "address1") %>
-				<%= label_tag("ship1_address_1", "ご自身の住所") %>
+				<%= f.radio_button :ship, "customer_address", checked: true %>
+				<%= f.label :ship, "ご自身の住所" %>
 				<div style="color:#0000FF">
 					<%= current_customer.postal_code %><%= current_customer.address %><br>
 					<%= current_customer.last_name %><%= current_customer.first_name %>
 				</div>
 			</div>
-
-			<div>
-				<%= radio_button_tag("ship", "address2") %>
-				<%= label_tag("ship2_address_2", "登録済住所から選択") %>
+			<% if @customer_ship %>
+				<div>
+				<%= f.radio_button :ship, "registrated_address" %>
+				<%= f.label :ship, "登録済住所から選択" %>
 				<div style="color:#0000FF">
-					<!-- ここにセレクトボックスにて配送先を選択できるようにする -->
-					<%= f.collection_select :shippping_address, current_customer.ships, :id, :full_address %>
+					<%= f.collection_select :customer_ship, current_customer.ships, :id, :full_address %>
 				</div>
-			</div>
+			<% end %>
 
 			<div>
-				<%= radio_button_tag("ship", "address3") %>
-				<%= label_tag("ship3_address_3", "新しいお届け先") %>
+			<%= f.radio_button :ship, "new_address" %>
+			<%= f.label :ship, "新しいお届け先" %>
 
-				<%= form_with(model: @ship, local: true, method: :get, url: {action: 'confirm'})  do |f| %>
-					<div style="display: inline-flex;"><div>郵便番号(ハイフンなし)</div><%= f.text_area :postal_code %></div><br>
-					<div style="display: inline-flex;"><div>住所</div><%= f.text_area :address %></div><br>
-					<div style="display: inline-flex;"><div>宛名</div><%= f.text_area :name %></div>
+					<div style="display: inline-flex;"><div>郵便番号(ハイフンなし)</div><%= f.text_field :shipping_postal_code %></div><br>
+					<div style="display: inline-flex;"><div>住所</div><%= f.text_field :shipping_address %></div><br>
+					<div style="display: inline-flex;"><div>宛名</div><%= f.text_field :shipping_name %></div>
 			</div>
 
 			<div>
 				<%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
 			</div>
-		<% end %>
 	<% end %>
 
 </div>

@@ -7,57 +7,77 @@
 			</div>
 		<!-- </div> -->
 	</div>
+<%= form_with(model: @order, local: true) do |f| %>
+	<%= f.hidden_field :shipping_postal_code, value: @order.shipping_postal_code %>
+	<%= f.hidden_field :shipping_address, value: @order.shipping_address %>
+	<%= f.hidden_field :shipping_name, value: @order.shipping_name %>
+	<%= f.hidden_field :total_price, value: @order.total_price %>
+	<%= f.hidden_field :payment_method , value: @order.payment_method %>
 
-<div class="row">
-	<div class="col-xs-7">
-		<table align="left", border="1">
-			<tr class="bg-info">
-				<th style="padding-top: 10px; padding-bottom: 10px;">商品名</th>
-				<th>単価(税込)</th>
-				<th>数量</th>
-				<th>小計</th>
-			</tr>
-			<tr>
-				<% @cart_products.each do |cart_product| %>
-					<td style="padding-top: 10px; padding-bottom: 10px;"><%= cart_product.product.name %></td>
-					<td><%= cart_product.product.no_tax_price %></td>
-					<td><%= cart_product.quantity %></td>
-					<td><%= cart_product.include_tax_price %></td>
-				<% end %>
-			</tr>
-		</table>
+		<div class="row">
+			<div class="col-xs-7">
+				<table align="left", border="1">
+					<tr class="bg-info">
+						<th style="padding-top: 10px; padding-bottom: 10px;">商品名</th>
+						<th>単価(税込)</th>
+						<th>数量</th>
+						<th>小計</th>
+					</tr>
+					<% @cart_products.each do |cart_product| %>
+					<tr>
+							<td style="padding-top: 10px; padding-bottom: 10px;"><%= cart_product.product.name %></td>
+							<td><%= cart_product.include_tax_unit_price %></td>
+							<td><%= cart_product.quantity %></td>
+							<td><%= cart_product.include_tax_total_price %></td>
+								<%= fields_for @order_product do |op| %>
+									<%= op.hidden_field :product_id , value: cart_product.product.id %>
+									<%= op.hidden_field :quantity, value: cart_product.quantity %>
+									<%= op.hidden_field :unit_price, value: cart_product.product.no_tax_price %>
+								<% end %>
+					</tr>
+					<% end %>
+				</table>
+			</div>
+
+
+			<div class="col-xs-4">
+				<table border="1" class="col-xs-offset-1">
+					<tr>
+						<td class="bg-info" style="padding-right:50px; padding-top:10px; padding-bottom:10px;">送料</td>
+						<td><%= @order.postages_price %></td>
+					</tr>
+					<tr>
+						<td class="bg-info" style="padding-right:50px; padding-top:10px; padding-bottom:10px;">商品合計</td>
+						<td><%= @order.total_price %></td>
+
+					</tr>
+					<tr>
+						<td class="bg-info" style="padding-right:50px; padding-top:10px; padding-bottom:10px;">請求金額</td>
+						<td><%= @order.amount_price %></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+	<div style="display: inline-flex; padding-top:40px">
+		<div style="padding-right:20px"><strong>支払い方法</strong></div>
+		<div><%= @order.payment_method %></div>
+	</div>
+	<div style="display: inline-flex; padding-top:40px">
+		<div style="padding-right:20px"><strong>お届け先</strong></div>
+		<div><%= @order.shipping_postal_code %> <%= @order.shipping_address %></div><br>
+		<div><%= @order.shipping_name %></div>
 	</div>
 
+	<% if params[:order][:ship] == "new_address" %>
+		<%= fields_for @ship do |ship| %>
+			<%= ship.hidden_field :postal_code, value: @order.shipping_postal_code %>
+			<%= ship.hidden_field :address, value: @order.shipping_address %>
+			<%= ship.hidden_field :name, value: @order.shipping_name %>
+		<% end %>
+	<% end %>
 
-	<div class="col-xs-4">
-		<table border="1" class="col-xs-offset-1">
-			<tr>
-				<td class="bg-info" style="padding-right:50px; padding-top:10px; padding-bottom:10px;">送料</td>
-				<td><%= postages_price %></td>
-			</tr>
-			<tr>
-				<td class="bg-info" style="padding-right:50px; padding-top:10px; padding-bottom:10px;">商品合計</td>
-				<td></td>
-			</tr>
-			<tr>
-				<td class="bg-info" style="padding-right:50px; padding-top:10px; padding-bottom:10px;">請求金額</td>
-				<td>請求金額反映させる</td>
-			</tr>
-		</table>
-	</div>
-</div>
-
-<div style="display: inline-flex; padding-top:40px">
-	<div style="padding-right:20px"><strong>支払い方法</strong></div>
-	<div><%= @order.payment_method %></div>
-</div>
 <br>
-<div style="display: inline-flex; padding-top:40px">
-	<div style="padding-right:20px"><strong>お届け先</strong></div>
-	<div><%= @order_address %></div>
-</div>
-<br>
-<div align="center"><%= link_to '購入を確定する', orders_thanks_path, class:"btn btn-success" %></div>
-
-</div>
+<div align="center"><%= f.submit '購入を確定する', class:"btn btn-success" %></div>
+<% end %>
 

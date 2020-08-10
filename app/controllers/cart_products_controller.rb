@@ -8,12 +8,12 @@ class CartProductsController < ApplicationController
 			flash[:success] = "カートに入りました。"
 			redirect_to cart_products_path
 		else
-			render "products/show"
+			redirect_back(fallback_location: root_url)
 		end
 	end
 
 	def index
-		@cart_products = CartProduct.where(customer_id: current_customer.id)
+		@cart_products = CartProduct.where(customer_id: current_customer.id).page(params[:page]).reverse_order
 	end
 
 	def update

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get "product_genres/:id" => "product_genres#index"#ジャンルのサイドバーからジャンル検索する際にidが必要なので変更しました。
   get 'product_genres/show'
 
-  get "/orders/confirm" => "orders#confirm"
+  post "/orders/confirm" => "orders#confirm"
   get "/orders/thanks" => "orders#thanks"
   #get"/customers"=> "customers#show,edit"がresouceとは別に存在していたので消しました。
   root 'home#top'
