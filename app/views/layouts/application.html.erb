@@ -13,7 +13,11 @@
     <header class="navbar", style="background-color: #ff9933; padding-bottom: 30px;">
       <div class="container">
         <nav class="nav navbar-nav navbar-left site-title">
+          <% if admin_signed_in? %>
+          <a href = "<%= admins_home_top_path %>"><h1 style= "color: #ffffff;"><strong>NaganoCake</strong></h1></a>
+          <% else %>
           <a href = "<%= root_path %>"><h1 style= "color: #ffffff;"><strong>NaganoCake</strong></h1></a>
+          <% end %>
         </nav>
         <nav class="nav-inc-text">
           <% if customer_signed_in? %>
@@ -34,7 +38,7 @@
             <% else %>
               <li role="presentation", class="nav-list-item"><%= link_to "About", home_about_path %></li>
               <li role="presentation", class="nav-list-item"><%= link_to "商品一覧", products_path %></li>
-              <li role="presentation", class="nav-list-item"><%= link_to "新規登録", new_customer_registration_path %></li>
+              <li role="presentation", class="nav-list-item"><%= link_to "新規登録", new_customer_registration_path, data: { "turbolinks": false } %></li>
               <li role="presentation", class="nav-list-item"><%= link_to "ログイン", new_customer_session_path %></li>
             <% end %>
           </ul>
