@@ -24,17 +24,17 @@
 					<th>　　　</th>
 				</tr>
 				<% total_price = 0%>
-					<% @cartproducts.each do |c| %>
+					<% @cart_products.each do |c| %>
 				<tr>
 					<td><%= c.product.name %></td>
-					<td><%= c.product.no_tax_price %></td>
+					<td><%= (c.product.no_tax_price * 1.1).floor %></td>
 				<% total_price += (c.product.no_tax_price * c.quantity)%>
 					<%= form_for c do |ca| %>
 					<td>
 						<%= ca.number_field :quantity %>
 						<%= ca.submit "変更", class: "btn btn-primary" %>
 					</td>
-					<td><%= c.product.no_tax_price * c.quantity %></td>
+					<td><%= (c.product.no_tax_price * 1.1 * c.quantity).floor %></td>
 					<td><%= link_to '削除する', cart_product_path(c), method: :delete, class: "btn btn-danger" %></td>
 					<% end %>
 
@@ -55,7 +55,7 @@
 			<table border="1">
 				<tr>
 					<td>合計金額</td>
-					<td><%= (total_price * 1.1.to_f).ceil %></td>
+					<td><%= (total_price * 1.1.to_f).floor %></td>
 				</tr>
 			</table>
 		</div>

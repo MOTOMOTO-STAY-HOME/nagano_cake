@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   get "product_genres/:id" => "product_genres#show", as: "genre"#indexページは部分テンプレートのsidebarと同じ役割なので、showページのみ残しました。
 
-  get "/orders/confirm" => "orders#confirm"
+  post "/orders/confirm" => "orders#confirm"#HTTPメソッドgetからpostに変更
   get "/orders/thanks" => "orders#thanks"
   #get"/customers"=> "customers#show,edit"がresouceとは別に存在していたので消しました。
   root 'home#top'
@@ -14,8 +14,8 @@ Rails.application.routes.draw do
   }
   patch "/customers/hide" => "customers#hide", as: 'customers/hide' #get=>patch
   get "/customers/last_confirm" => "customers#last_confirm"#conform=>confirm
-  resources :cart_products, only: [:index, :create, :update, :destroy] #destroy追加show削除
   delete "/cart_products/reset/:id" => "cart_products#reset" #get=>delete#destroyと同じURLになってしまうので編集
+  resources :cart_products, only: [:index, :create, :update, :destroy] #destroy追加show削除
   resources :orders, only: [:new, :index, :show, :create]
 
   # get "/orders/confirm" => "orders#confirm" #上部に移動済みの為削除

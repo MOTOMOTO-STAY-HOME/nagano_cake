@@ -2,7 +2,7 @@ class Order < ApplicationRecord
 	has_many :order_products
 	belongs_to :customer
 
-	enum payment_method: {クレジットカード:0, 現金:1}
+	enum payment_method: {クレジットカード:0, 銀行振込:1}
 
 	validates :shipping_name, presence: true
 	validates :shipping_postal_code, presence: true
