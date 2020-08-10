@@ -1,5 +1,5 @@
 <div>
-	<span>注文内容</span>
+	<table class="table table-bordered" style="margin: 40px 0;">
 		<tr>
 			<th class="panel-body">商品</th>
 			<th class="panel-body">単価(税込)</th>
@@ -11,7 +11,7 @@
     <% OrderProduct.where(order_id: order.id).each do |op| %>
 		<tr>
 
-			<td><%= op.product.name %></td>
+			<td> <%= op.product.name %></td>
 			<td><%= (op.product.no_tax_price.to_i*1.1).ceil %></td>
 			<td><%= op.quantity %></td>
 			<td><%= (op.product.no_tax_price.to_i*1.1*op.quantity).ceil %></td>
@@ -19,11 +19,13 @@
 			<td>
 				<%= os.select :production_status, OrderProduct.production_statuses.keys.to_a %>
 			</td>
-			<td><%= os.submit "更新" %></td>
+			<td><%= os.submit "更新", class: "btn btn-primary" %></td>
 			<% hidden_field_tag :product, op.id %>
 			<% end %>
 		</tr>
 		<% end %>
+		</table>
+
 	<tr>
 		<th class="panel-body">商品合計</th>
 		<td><%= @total_price %></td>

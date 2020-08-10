@@ -7,7 +7,7 @@ class Admins::OrdersController < Admins::ApplicationController
     @order = Order.find(params[:id])
     @total_price = @order.total_price
     @postage_price = @order.postages_price
-    @order_status = Order.order_status
+    @order_status = Order.order_statuses
   end
 
   def update
@@ -20,11 +20,11 @@ class Admins::OrdersController < Admins::ApplicationController
         render "show"
       end
 
-    if Order.order_status == 2
-      @ = OrderProduct.production_status
-    elsif Order.order_status == 3
+    # if Order.order_status == 2
+      # @ = OrderProduct.production_status
+    # elsif Order.order_status == 3
 
-    end
+    # end
 
   end
 

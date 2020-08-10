@@ -43,14 +43,14 @@ Order.create!(
   shipping_postal_code: 1110000,
   shipping_address: "test_granma_hause",
   payment_method: 0,
-  total_price: 1100,
+  total_price: 4100,
   order_status: 0,
-  postages_price: 500,
+  postages_price: 800,
 )
 OrderProduct.create!(
   order_id: 1,
   product_id: 1,
   quantity: 3,
   production_status: 0,
-  unit_price: 1600,
+  unit_price: 3000,
 )
