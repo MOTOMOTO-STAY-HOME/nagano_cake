@@ -44,7 +44,7 @@
 								税込価格（税抜価格）
 							</td>
 							<td>
-								<%= (@product.no_tax_price * 1.1.to_f).ceil %>
+								<%= (@product.no_tax_price * 1.1.to_f).floor %>
 								(<%= @product.no_tax_price %>)円
 							</td>
 						</tr>
@@ -64,7 +64,7 @@
 							<td>
 							</td>
 							<td>
-							<%= link_to "--編集する--", edit_admins_product_path(@product), class: "btn btn-primary" %>
+							<%= link_to "編集する", edit_admins_product_path(@product), class: "btn btn-primary" %>
 							</td>
 						</tr>
 				</tbody>
