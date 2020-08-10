@@ -7,8 +7,8 @@
       <th><%= @customer.id %></th>
     </tr>
     <tr>
-      <th class="active col-xs-2", style="height: 40px;">氏名</th>
-        <%= form_for @customer, url: admins_customer_path do |c| %>
+      <th>氏名</th>
+        <%= form_for @customer, url: admins_customer_path(@customer.id) do |c| %>
           <th><%= c.text_field :last_name %></th>
           <th><%= c.text_field :first_name %></th>
     </tr>
