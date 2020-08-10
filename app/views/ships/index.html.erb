@@ -30,7 +30,7 @@
 				<td><%= ship.name %></td>
 				<td>
 					<div style="display: flex; justify-content: space-between;">
-						<%= link_to "編集する", edit_ship_path(ship.id), class: "btn btn-primary" %>
+						<%= link_to "編集する", edit_ship_path(ship.id), class: "btn btn-primary", data: { "turbolinks": false } %>
 						<%= link_to "削除する", ship_path(ship.id), method: :delete, class: "btn btn-danger" %>
 					</div>
 				</td>

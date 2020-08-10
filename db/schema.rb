@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2020_08_07_041252) do
     t.integer "order_id"
     t.integer "product_id"
     t.integer "quantity"
-    t.integer "production_status"
+    t.integer "production_status", default: 0
     t.integer "unit_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2020_08_07_041252) do
     t.string "shipping_address"
     t.integer "payment_method"
     t.integer "total_price"
-    t.integer "order_status"
+    t.integer "order_status", default: 0
     t.integer "postages_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
