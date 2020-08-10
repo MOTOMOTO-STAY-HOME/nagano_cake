@@ -20,6 +20,7 @@ class Admins::OrdersController < Admins::ApplicationController
 
       if @order.order_status == "入金確認"
         @order_product.production_status = "製作待ち"
+        @order_product.save
       end
 
     else
