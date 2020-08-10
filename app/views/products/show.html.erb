@@ -26,18 +26,18 @@
 						</tr>
 						<tr>
 							<td>
-								<h4>¥ <%= (@product.no_tax_price * 1.1.to_f).ceil %></h4>
+								<h4>¥ <%= (@product.no_tax_price * 1.1.to_f).floor %></h4>
 								<h6>(税込)</h6>
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<!%= form_for @cart_product, url: cart_products_path(@cart_product) do |f| %>
-							            <!%= f.select :quantity, [*1..10], include_blank: "個数選択" %>
-							            <!div class="actions">
+								<%#= form_for @cart_product, url: cart_products_path(@cart_product) do |f| %>
+							            <%#= f.select :quantity, [*1..10], include_blank: "個数選択" %>
+							            <!--div class="actions">
 									    	<!%= f.submit 'カートに入れる' %>
 									    <!/div>
-							      <!% end %>
+							      <!% end %>-->
 
 						      	<%= form_for @cart_product do |f| %>
 						      		<%= f.hidden_field :product_id, value: @product.id %>

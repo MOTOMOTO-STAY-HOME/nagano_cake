@@ -18,7 +18,7 @@
 								<%= attachment_image_tag product, :image, :fill, 100, 100,  fallback: "no-image.jpg"%>
 							<% end %>
 							<p><%= product.name %></p>
-							<p>￥<%= (product.no_tax_price* 1.1.to_f).ceil %></p><! 詳細画面に飛んだ時用に税込み価格に統一しました。>
+							<p>￥<%= (product.no_tax_price* 1.1.to_f).floor %></p><! 詳細画面に飛んだ時用に税込み価格に統一しました。>
 						</div>
 					<% end %>
 				</div>
