@@ -41,7 +41,6 @@ class ShipsController < ApplicationController
   end
 
   		private
-
     		def ship_params
     			params.require(:ship).permit(:name, :postal_code, :address)
     		end

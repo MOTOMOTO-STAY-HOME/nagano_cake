@@ -1,25 +1,36 @@
- <div class='col-xs-9'>
+ <div class='col-xs-12'>
  	<h2>商品一覧</h2>
  	<table class="panel panel-default">
 
- 		<thead>
- 			<tr>
- 				<th class="panel-heading">商品ID</th>
- 				<th class="panel-heading">商品名</th>
- 				<th class="panel-heading">税抜価格</th>
- 				<th class="panel-heading">ジャンル</th>
- 				<th class="panel-heading">ステータス</th>
- 			</tr>
- 		</thead>
+		<div>
+	 		<%= link_to new_admins_product_path do %>
+		 		<button type="button" class="btn btn-default" aria-label="Left Align">
+		 			<span class="glyphicon glyphicon-plus" aria-hidden="true">
+		 			</span>
+		 		</button>
+	 		<% end %>
+	 	</div>
 
- 		<tbody>
-	 			<% @products.each do |product| %>
+	 		<thead>
+	 			<tr>
+	 				<th class="panel-heading">商品ID</th>
+	 				<th class="panel-heading">商品名</th>
+	 				<th class="panel-heading">税抜価格</th>
+	 				<th class="panel-heading">ジャンル</th>
+	 				<th class="panel-heading">ステータス</th>
+	 			</tr>
+	 		</thead>
+
+	 		<tbody>
+				<% @products.each do |product| %>
 		 			<tr>
 		 				<td class="panel-body">
 		 					<%= product.id %>
 		 				</td>
 		 				<td>
-		 					<%= product.name %>
+		 					<%= link_to admins_product_path(product) do %>
+		 						<%= product.name %>
+		 					<% end %>
 		 				</td>
 		 				<td class="panel-body">
 		 					<%= product.no_tax_price %>
@@ -35,10 +46,12 @@
 			 				<% end %>
 		 				</td>
 		 			</tr>
-	 			<% end %>
-	 		<tr>
- 				<%= paginate @products %>
- 			</tr>
- 		</tbody>
- 	</table>
+				<% end %>
+	 		</tbody>
+	 	</table>
+
+ 	<div class='row'>
+ 		<%= paginate @products %>
+ 	</div>
+
  </div>
