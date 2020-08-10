@@ -14,13 +14,13 @@ Admin.create!(
 Customer.create!(
   last_name: "テス",
   first_name: "太郎",
-  kana_last_name: "tesu",
-  kana_first_name: "tarou",
+  kana_last_name: "テス",
+  kana_first_name: "タロウ",
   email: "test@test.com",
   password: "testtest",
-  postal_code: "testtest",
+  postal_code: "3001234",
   address: "testtest",
-  phone: "testtest",
+  phone: "12345678912",
   is_active: "true",
 )
 ProductGenre.create!(
