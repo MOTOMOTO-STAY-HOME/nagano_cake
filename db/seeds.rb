@@ -18,8 +18,13 @@ Customer.create!(
   kana_first_name: "タロウ",
   email: "test@test.com",
   password: "testtest",
+<<<<<<< HEAD
+  postal_code: "3001234",
+  address: "testtest",
+=======
   postal_code: "1234567",
   address: "1234567",
+>>>>>>> origin/develop
   phone: "12345678912",
   is_active: "true",
 )
