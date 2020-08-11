@@ -21,6 +21,7 @@
 					<th>小計</th>
 					<th>　　　</th>
 				</tr>
+
 				<% @cart_products.each do |cart_product| %>
 					<tr>
 						<td><%= attachment_image_tag cart_product.product, :image, :fill, 80, 50, format: 'jpeg', style: "margin: 5px 5px;", fallback: "no-image.jpg", size: "80x50" %>
@@ -53,7 +54,9 @@
 			<table border="1">
 				<tr>
 					<td>合計金額</td>
+
 					<td><%= @total_price %></td>
+
 				</tr>
 			</table>
 		</div>

@@ -18,3 +18,4 @@ class ProductsController < ApplicationController
 	    #redirect_to cart_products_path
 	#end
 end
+
