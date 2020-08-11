@@ -4,9 +4,6 @@ class OrdersController < ApplicationController
   before_action :ensure_correct_customer, only:[:show]
 
   def new
-    #if current_customer.ships
-      #@customer_ship = Ship.find_by(customer_id: current_customer.id)
-    #end
     @order = Order.new
   end
 
