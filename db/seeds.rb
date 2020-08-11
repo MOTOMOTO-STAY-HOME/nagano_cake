@@ -18,10 +18,6 @@ Customer.create!(
   kana_first_name: "タロウ",
   email: "test@test.com",
   password: "testtest",
-<<<<<<< HEAD
-  postal_code: "3001234",
-  address: "testtest",
-=======
   postal_code: "1234567",
   address: "1234567",
 >>>>>>> origin/develop
@@ -88,7 +84,6 @@ OrderProduct.create!(
 )
 
 
-<<<<<<< HEAD
 Customer.create!(
 	last_name: "user",
 	first_name: "1",
@@ -117,5 +112,4 @@ CartProduct.create!(
     product_id: 1,
     quantity: 1
     )
-=======
 >>>>>>> 0d01ca81b6396dd2b7e928068eeb21a2617b6fa0
