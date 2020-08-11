@@ -20,7 +20,7 @@
 				<%= current_customer.last_name %><%= current_customer.first_name %>
 			</div>
 		</div>
-		<% if @customer_ship %>
+		<% if current_customer.ships.exists? %>
 			<div>
 				<%= f.radio_button :ship, "registrated_address" %>
 				<%= f.label :ship, "登録済住所から選択" %>
