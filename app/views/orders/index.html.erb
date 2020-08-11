@@ -15,7 +15,7 @@
 				<% if @orders.exists? %>
 					<% @orders.each do |order| %>
 						<tr>
-							<td style="vertical-align: middle;"><%= order.created_at %></td>
+							<td style="vertical-align: middle;"><%= l order.created_at %></td>
 							<td><%= order.shipping_postal_code %><br>
 								<%= order.shipping_address %><br>
 								<%= order.shipping_name %>
