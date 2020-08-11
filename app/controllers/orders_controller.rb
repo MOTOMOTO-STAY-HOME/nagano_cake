@@ -8,7 +8,6 @@ class OrdersController < ApplicationController
       @customer_ship = Ship.find_by(customer_id: current_customer.id)
     end
     @order = Order.new
-    #@ship = Ship.new(ship_params)
   end
 
  def confirm
@@ -23,6 +22,7 @@ class OrdersController < ApplicationController
       @order.shipping_address = Ship.find(params[:order][:customer_ship]).address
       @order.shipping_name = Ship.find(params[:order][:customer_ship]).name
     elsif params[:order][:ship] == "new_address"
+      @flag = "new_address"
       @ship = Ship.new
     else
       redirect_back(fallback_location: root_url)
@@ -35,16 +35,14 @@ class OrdersController < ApplicationController
  end
 
   def create
-    @order = current_customer.orders.create(order_params)
-    @order_product = OrderProduct.new
-    current_customer.cart_products.each do |cart_product|
-      @order_product = OrderProduct.new
-      @order_product = @order.order_products.new(product_id: cart_product.product.id, quantity: cart_product.quantity, unit_price: cart_product.product.no_tax_price)
-    end
-    if @ship
-      @ship = current_customer.ships.create(ship_params)
-    end
-    if @order_product.save
+    if @order = current_customer.orders.create(order_params)
+        current_customer.cart_products.each do |cart_product|
+        @order_product = @order.order_products.new(product_id: cart_product.product.id, quantity: cart_product.quantity, unit_price: cart_product.product.no_tax_price)
+        @order_product.save
+      end
+      if params[:flag] == "new_address"
+        @ship = current_customer.ships.create(ship_params)
+      end
       current_customer.cart_products.destroy_all
       redirect_to orders_thanks_url
     else

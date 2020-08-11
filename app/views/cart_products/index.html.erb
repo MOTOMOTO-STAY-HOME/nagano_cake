@@ -1,5 +1,4 @@
 <div class="container">
-
 	<div class="row">
 		<div class="col-xs-1"></div>
 		<div class="col-xs-4">
@@ -11,7 +10,6 @@
 		</div>
 		<div class="col-xs-1"></div>
 	</div>
-
 	<div class="row">
 		<div class="col-xs-1"></div>
 		<div class="col-xs-10">
@@ -25,28 +23,27 @@
 				</tr>
 
 				<% @cart_products.each do |cart_product| %>
-				<tr>
-					<td><%= cart_product.product.name %></td>
-					<td><%= cart_product.include_tax_unit_price %></td>
-
-					<td>
-						<%= form_for cart_product do |f| %>
-							<%= f.number_field :quantity %>
-							<%= f.submit "変更", class: "btn btn-primary" %>
-						<% end %>
-					</td>
-					<td><%= cart_product.include_tax_total_price %></td>
-					<td>
-						<%= link_to '削除する', cart_product_path(cart_product.id), method: :delete, class: "btn btn-danger" %>
-					</td>
-
-				</tr>
+					<tr>
+						<td><%= attachment_image_tag cart_product.product, :image, :fill, 80, 50, format: 'jpeg', style: "margin: 5px 5px;", fallback: "no-image.jpg", size: "80x50" %>
+							<%= cart_product.product.name %>
+						</td>
+						<td><%= cart_product.include_tax_unit_price %></td>
+						<td>
+							<%= form_for cart_product do |f| %>
+								<%= f.number_field :quantity %>
+								<%= f.submit "変更", class: "btn btn-primary" %>
+							<% end %>
+						</td>
+						<td><%= cart_product.include_tax_total_price %></td>
+						<td>
+							<%= link_to '削除する', cart_product_path(cart_product.id), method: :delete, class: "btn btn-danger" %>
+						</td>
+					</tr>
 				<% end %>
 			</table>
 		</div>
 		<div class="col-xs-1"></div>
 	</div>
-
 	<div class="row">
 		<div class="col-xs-1"></div>
 		<div class="col-xs-2">
@@ -75,7 +72,6 @@
 		</div>
 		<div class="col-xs-4"></div>
 	</div>
-
 </div>
 
 
