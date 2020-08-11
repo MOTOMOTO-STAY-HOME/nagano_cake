@@ -9,11 +9,13 @@ class ProductsController < ApplicationController
 
 	def show
 		@product = Product.find(params[:id])
+		@cart_product = CartProduct.new
 	end
 
-	def create
+	#def create
 		#cart_product= Cart_product.new(cart_product_params)☆
 	  	#cart_product.save
 	    #redirect_to cart_products_path
-	end
+	#end
 end
+

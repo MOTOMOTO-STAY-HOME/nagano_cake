@@ -1,2 +1,35 @@
-<h1>Admins::Orders#show</h1>
-<p>Find me in app/views/admins/orders/show.html.erb</p>
+  <h4 class="col-xs-offset-1", style="padding-bottom: 30px;"><span style="background-color: #DDDDDD; padding: .3em;">注文履歴詳細</span></h4>
+  <%= form_for @order, url: admins_order_path(@order.id) do |os| %>
+	<table>
+  <tbody>
+    <tr>
+      <th class="panel-body">購入者</th>
+      <td>
+        <%= link_to admins_customer_path(@order.customer.id) do %>
+        <%= @order.customer.full_name %>
+        <% end %>
+      </td>
+    </tr>
+      <tr>
+        <th class="panel-body">配送先</th>
+        <td>〒<%= @order.shipping_postal_code %>
+              <%= @order.shipping_address %>
+        </td>
+      </tr>
+      <tr>
+        <th class="panel-body"></th>
+        <td><%= @order.shipping_name %></td>
+      </tr>
+      <tr>
+        <th class="panel-body">支払方法</th>
+        <td><%= @order.payment_method %></td>
+      </tr>
+      <tr>
+        <th class="panel-body">注文ステータス</th>
+        <td class="field"> <%= os.select :order_status, Order.order_statuses.keys.to_a %> </td>
+        <td btn btn-primary> <%= os.submit "更新", class: "btn btn-primary" %> </td>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
+    <%= render 'admins/order_products/order_products_list', order: @order %>

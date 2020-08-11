@@ -1,35 +1,86 @@
 class OrdersController < ApplicationController
-
   before_action :authenticate_customer!
+  before_action :have_cart_product, only:[:new, :confirm, :create]
+  before_action :ensure_correct_customer, only:[:show]
 
   def new
     @order = Order.new
   end
 
+ def confirm
+    @order = current_customer.orders.new(order_params)
+    @order_product = OrderProduct.new
+    if params[:order][:ship] == "customer_address"
+      @order.shipping_postal_code = current_customer.postal_code
+      @order.shipping_address = current_customer.address
+      @order.shipping_name = "#{current_customer.last_name} #{current_customer.first_name}"
+    elsif params[:order][:ship] == "registrated_address"
+      @order.shipping_postal_code = Ship.find(params[:order][:customer_ship]).postal_code
+      @order.shipping_address = Ship.find(params[:order][:customer_ship]).address
+      @order.shipping_name = Ship.find(params[:order][:customer_ship]).name
+    elsif params[:order][:ship] == "new_address"
+      @flag = "new_address"
+      @ship = Ship.new
+    else
+      redirect_back(fallback_location: root_url)
+    end
+    @cart_products = CartProduct.where(customer_id: current_customer.id)
+    @order.total_price = 0
+    @cart_products.each do |cart_product|
+      @order.total_price += cart_product.include_tax_total_price
+    end
+ end
+
   def create
+    if @order = current_customer.orders.create(order_params)
+      current_customer.cart_products.each do |cart_product|
+      @order_product = @order.order_products.new(product_id: cart_product.product.id, quantity: cart_product.quantity, unit_price: cart_product.product.no_tax_price)
+      @order_product.save
+      end
+      if params[:flag] == "new_address"
+        @ship = current_customer.ships.create(ship_params)
+      end
+      current_customer.cart_products.destroy_all
+      redirect_to orders_thanks_url
+    else
+      flash.now[:danger] = "注文できませんでした。"
+      @customer_ship = Ship.find_by(customer_id: current_customer.id)
+      render :new
+    end
   end
 
   def index
+    @orders = Order.where(customer_id: current_customer.id).page(params[:page]).reverse_order
   end
 
   def show
+    @order = Order.find(params[:id])
   end
-
-  def confirm
-        if params == "address 1"
-          @orderaddress = Customer.where(current_customer.id)
-        elsif params == "address 2"
-          @orderaddress = Ship.where(:full_address[:id])
-        else
-          @orderaddress = Order.find(params[:order][:shipping_name])
-        end
-      end
-    end
 
   def thanks
   end
 
-  private
-  def order_params
-    params.require(:order).permit(:customer_id, :shipping_name, :shipping_postal_code, :shipping_address, :payment_method, :total_price, :order_status, :postages_price)
-  end
+
+    private
+      def ship_params
+        params.require(:ship).permit(:name, :postal_code, :address)
+      end
+
+      def order_params
+        params.require(:order).permit(:customer_id, :shipping_name, :shipping_postal_code, :shipping_address, :payment_method, :total_price, :postages_price)
+      end
+
+      def have_cart_product
+        unless current_customer.cart_products.exists?
+          redirect_back(fallback_location: root_url)
+        end
+      end
+
+      def ensure_correct_customer
+        @order = Order.find(params[:id])
+        unless @order.customer.id == current_customer.id
+          redirect_back(fallback_location: root_url)
+        end
+      end
+end
+
