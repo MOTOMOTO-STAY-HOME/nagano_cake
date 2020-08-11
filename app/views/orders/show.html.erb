@@ -1,19 +1,71 @@
-<div>
-	<span>注文内容</span>
-	<table border="1">
-		<tr>
-			<th>商品</th>
-			<th>単価(税込)</th>
-			<th>個数</th>
-			<th>小計</th>
-		</tr>
-		<% @order.order_products.each do |order_product| %>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-3" style="text-align: center;"><h2 style="background-color: #DDDDDD">注文履歴詳細</h2></div>
+	</div>
+
+    <div class="row">
+    	<div class="pull-left">
+			<div style="padding-bottom: 10px;"><strong>注文情報</strong></div>
+			<table border="1" style="width: 500px;">
+				<tr>
+					<td style="padding: 5px;">注文日</td>
+					<td style="padding: 5px;"><%= l @order.created_at %></td>
+				</tr>
+				<tr>
+					<td style="padding: 5px;">配送先</td>
+					<td style="padding: 5px;"><%= @order.shipping_postal_code %><br>
+						<%= @order.shipping_address %><br>
+						<%= @order.shipping_name %>
+					</td>
+				</tr>
+				<tr>
+					<td style="padding: 5px;">支払方法</td>
+					<td style="padding: 5px;"><%= @order.payment_method %></td>
+				</tr>
+				<tr>
+					<td style="padding: 5px;">ステータス</td>
+					<td style="padding: 5px;"><%= @order.order_status %></td>
+				</tr>
+			</table>
+		</div>
+
+
+		<div class="col-xs-6">
+			<div style="padding-bottom: 10px;"><strong>請求情報</strong></div>
+			<table border="1" style="width: 200px;">
+				<tr>
+					<td style="padding: 5px;">商品合計</td>
+					<td style="padding: 5px;"><%= @order.total_price %></td>
+				</tr>
+				<tr>
+					<td style="padding: 5px;">配送料</td>
+					<td style="padding: 5px;"><%= @order.postages_price %></td>
+				</tr>
+				<tr>
+					<td style="padding: 5px;">ご請求額</td>
+					<td style="padding: 5px;"><%= @order.amount_price %></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	<div class="row" style="padding-top: 20px;">
+		<div style="padding-bottom: 10px"><strong>注文内容</strong></div>
+		<table border="1" style="width: 700px;">
 			<tr>
-				<td><%= order_product.product.name %></td>
-				<td><%= order_product.include_tax_unit_price %></td>
-				<td><%= order_product.quantity %></td>
-				<td><%= order_product.include_tax_total_price %></td>
+				<th style="padding: 5px;">商品</th>
+				<th style="padding: 5px; width: 100px;">単価(税込)</th>
+				<th style="padding: 5px; width: 70px;">個数</th>
+				<th style="padding: 5px; width: 70px;">小計</th>
 			</tr>
-		<% end %>
-	</table>
+				<% @order.order_products.each do |order_product| %>
+			<tr>
+				<td style="padding: 5px;"><%= order_product.product.name %></td>
+				<td style="padding: 5px;"><%= order_product.include_tax_unit_price %></td>
+				<td style="padding: 5px;"><%= order_product.quantity %></td>
+				<td style="padding: 5px;"><%= order_product.include_tax_total_price %></td>
+			</tr>
+			<% end %>
+		</table>
+	</div>
 </div>
