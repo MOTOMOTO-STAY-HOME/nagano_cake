@@ -14,13 +14,13 @@ Admin.create!(
 Customer.create!(
   last_name: "テス",
   first_name: "太郎",
-  kana_last_name: "tesu",
-  kana_first_name: "tarou",
+  kana_last_name: "テス",
+  kana_first_name: "タロウ",
   email: "test@test.com",
   password: "testtest",
-  postal_code: "testtest",
-  address: "testtest",
-  phone: "testtest",
+  postal_code: "1910022",
+  address: "テスト県てすと市",
+  phone: "09011992277",
   is_active: "true",
 )
 ProductGenre.create!(
@@ -98,4 +98,3 @@ CartProduct.create!(
     product_id: 1,
     quantity: 1
     )
-

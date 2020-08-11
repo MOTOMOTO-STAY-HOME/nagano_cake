@@ -16,13 +16,13 @@ class Admins::OrdersController < Admins::ApplicationController
 
   def update
     @order =Order.find(params[:id])
-    @order_product = OrderProduct.find_by(order_id: @order.id)
+    @order_products = OrderProduct.where(order_id: @order.id)
     if @order.update(order_params)
 
-      @order_product.production_status.each do |product|
+      @order_products.each do |product|
         if @order.order_status == "入金確認"
-          product = "製作待ち"
-          @order_product.save
+          product.production_status = "製作待ち"
+          product.save
         end
       end
 
