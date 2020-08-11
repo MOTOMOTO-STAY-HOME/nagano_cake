@@ -1,8 +1,16 @@
 ja:
   activerecord:
     attributes:
-      user:
+      customer:
         email: メールアドレス
         password: パスワード
         password_confirmation: 確認用パスワード
         remember_me: 次回から自動的にログイン
+        last_name: 名前(姓)
+        first_name: 名前(名)
+        kana_last_name: フリガナ(セイ)
+        kana_first_name: フリガナ(メイ)
+        email: メールアドレス
+        postal_code: 郵便番号
+        address: 住所
+        phone: 電話番号
