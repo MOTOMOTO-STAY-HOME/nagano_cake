@@ -12,6 +12,4 @@ class CartProduct < ApplicationRecord
 		#(self.product.no_tax_price * 1.1.to_f).ceil * self.quantity
 		(self.quantity * self.product.no_tax_price * 1.1).floor
 	end
-
-
 end

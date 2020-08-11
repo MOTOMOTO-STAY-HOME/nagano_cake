@@ -28,6 +28,7 @@
 					<%= f.collection_select :customer_ship, current_customer.ships, :id, :full_address %>
 				</div>
 			</div>
+
 		<% end %>
 		<div>
 		<%= f.radio_button :ship, "new_address" %>
@@ -36,6 +37,7 @@
 			<div style="display: inline-flex;"><div>住所</div><%= f.text_field :shipping_address %></div><br>
 			<div style="display: inline-flex;"><div>宛名</div><%= f.text_field :shipping_name %></div>
 			<%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
+
 		</div>
 	<% end %>
 </div>
