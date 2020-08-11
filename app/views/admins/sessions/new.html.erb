@@ -1,25 +1,21 @@
-<h2>管理者ログイン</h2>
+<h4 class="col-xs-offset-2", style="padding:60px 0 30px;"><span style="background-color: #DDDDDD; padding: .3em;">　管理者ログイン </span></h4>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email, "メールアドレス" %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+
+  <div class="form-group customer-form col-xs-12">
+    <%= f.label :email, "メールアドレス", class: "col-xs-2 col-xs-offset-3", style: "text-align: center;" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: ""メールアドレス", class: "form-inline col-xs-5" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password, "パスワード" %>
-    <%= f.password_field :password, autocomplete: "current-password" %>
+  <div class="form-group customer-form col-xs-12">
+    <%= f.label :password, "パスワード", class: "col-xs-2 col-xs-offset-3", style: "text-align: center;" %>
+    <%= f.password_field :password, autocomplete: "パスワード", class: "form-inline col-xs-5" %>
   </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
+  
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+  <div class="form-group">
+    <%= f.submit "ログイン", class:"btn btn-primary col-xs-2 col-xs-offset-5" %>
   </div>
 <% end %>
 
