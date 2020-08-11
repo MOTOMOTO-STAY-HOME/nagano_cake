@@ -19,6 +19,8 @@ class Admins::OrdersController < Admins::ApplicationController
     @order_products = OrderProduct.where(order_id: @order.id)
     if @order.update(order_params)
 
+      redirect_back(fallback_location: admins_order_path(@order.id))
+      flash[:notice] = "注文ステータスを更新しました。"
       @order_products.each do |product|
         if @order.order_status == "入金確認"
           product.production_status = "製作待ち"
@@ -26,8 +28,6 @@ class Admins::OrdersController < Admins::ApplicationController
         end
       end
 
-      redirect_back(fallback_location: admins_order_path(@order.id))
-      flash[:notice] = "注文ステータスを更新しました。"
 
     else
       render "show"

@@ -12,7 +12,7 @@ class Admins::OrderProductsController < Admins::ApplicationController
           end
           @order.order_products.each do |product|
           if product.production_status == "製作完了"
-            @order.order_status = "発送準備中"
+            @order.order_status = "発送待ち"
             @order.save
           else
             @order.order_status = "製作中"
