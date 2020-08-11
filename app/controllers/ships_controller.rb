@@ -9,7 +9,7 @@ class ShipsController < ApplicationController
   end
 
   def create
-  	@ship = current_customer.ships.build(ship_params)
+  	@ship = current_customer.ships.new(ship_params)
   	if @ship.save
   		flash[:success]= "新しい配送先が登録されました。"
   		redirect_to ships_url

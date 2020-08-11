@@ -1,12 +1,12 @@
 class OrdersController < ApplicationController
   before_action :authenticate_customer!
   before_action :have_cart_product, only:[:new, :confirm, :create]
-  before_action :correct_customer, only:[:show]
+  before_action :ensure_correct_customer, only:[:show]
 
   def new
-    if current_customer.ships
-      @customer_ship = Ship.find_by(customer_id: current_customer.id)
-    end
+    #if current_customer.ships
+      #@customer_ship = Ship.find_by(customer_id: current_customer.id)
+    #end
     @order = Order.new
   end
 
@@ -36,9 +36,9 @@ class OrdersController < ApplicationController
 
   def create
     if @order = current_customer.orders.create(order_params)
-        current_customer.cart_products.each do |cart_product|
-        @order_product = @order.order_products.new(product_id: cart_product.product.id, quantity: cart_product.quantity, unit_price: cart_product.product.no_tax_price)
-        @order_product.save
+      current_customer.cart_products.each do |cart_product|
+      @order_product = @order.order_products.new(product_id: cart_product.product.id, quantity: cart_product.quantity, unit_price: cart_product.product.no_tax_price)
+      @order_product.save
       end
       if params[:flag] == "new_address"
         @ship = current_customer.ships.create(ship_params)
@@ -47,6 +47,7 @@ class OrdersController < ApplicationController
       redirect_to orders_thanks_url
     else
       flash.now[:danger] = "注文できませんでした。"
+      @customer_ship = Ship.find_by(customer_id: current_customer.id)
       render :new
     end
   end
@@ -78,7 +79,7 @@ class OrdersController < ApplicationController
         end
       end
 
-      def correct_customer
+      def ensure_correct_customer
         @order = Order.find(params[:id])
         unless @order.customer.id == current_customer.id
           redirect_back(fallback_location: root_url)
