@@ -18,8 +18,13 @@ Customer.create!(
   kana_first_name: "タロウ",
   email: "test@test.com",
   password: "testtest",
+<<<<<<< HEAD
+  postal_code: "3001234",
+  address: "testtest",
+=======
   postal_code: "1234567",
   address: "1234567",
+>>>>>>> origin/develop
   phone: "12345678912",
   is_active: "true",
 )
@@ -83,3 +88,34 @@ OrderProduct.create!(
 )
 
 
+<<<<<<< HEAD
+Customer.create!(
+	last_name: "user",
+	first_name: "1",
+	kana_first_name: "ユーザー",
+	kana_last_name: "イチ",
+	email: "user1@user.com",
+	password: "password",
+	postal_code: "1600022",
+	address: "東京都新宿区新宿２丁目５−１０ 成信ビル4階",
+	phone: "09000000000"
+	)
+
+ProductGenre.create!(
+   	name: "ケーキ"
+   	)
+
+Product.create!(
+	name: "イチゴのタルト",
+    discription: "甘酸っぱくておいしい",
+    no_tax_price: 3000,
+    product_genre_id: 1
+	)
+
+CartProduct.create!(
+	customer_id: 1,
+    product_id: 1,
+    quantity: 1
+    )
+=======
+>>>>>>> 0d01ca81b6396dd2b7e928068eeb21a2617b6fa0

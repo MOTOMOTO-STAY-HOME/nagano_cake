@@ -1,43 +1,51 @@
-<h3>注文情報入力</h3>
+<div class='container'>
+	<h2>注文情報入力</h2>
 
-<div>
-	<%= form_with(model: @order, local: true, url: {action: 'confirm'})  do |f| %>
-		<span>支払方法</span>
-		<div>
-			<%= f.radio_button :payment_method, "クレジットカード", checked: true %>
-			<%= f.label :payment_method, :クレジットカード %>
-		</div>
-		<div>
-			<%= f.radio_button :payment_method, "銀行振込" %>
-			<%= label :payment_method, :銀行振込 %>
-		</div>
-		<span>お届け先</span>
-		<div>
-			<%= f.radio_button :ship, "customer_address", checked: true %>
-			<%= f.label :ship, "ご自身の住所" %>
-			<div style="color:#0000FF">
-				<%= current_customer.postal_code %><%= current_customer.address %><br>
-				<%= current_customer.last_name %><%= current_customer.first_name %>
+	<div>
+		<%= form_with(model: @order, local: true, url: {action: 'confirm'})  do |f| %>
+			<div class="row">
+					<h4 class="pay">支払方法</h4>
+						<div>
+							<%= f.radio_button :payment_method, "クレジットカード", checked: true %>
+							<%= f.label :payment_method, :クレジットカード %>
+						</div>
+						<div>
+							<%= f.radio_button :payment_method, "銀行振込" %>
+							<%= label :payment_method, :銀行振込 %>
+						</div>
 			</div>
-		</div>
-		<% if current_customer.ships.exists? %>
-			<div>
-				<%= f.radio_button :ship, "registrated_address" %>
-				<%= f.label :ship, "登録済住所から選択" %>
-				<div style="color:#0000FF">
-					<%= f.collection_select :customer_ship, current_customer.ships, :id, :full_address %>
-				</div>
+
+			<div class="row">
+				<h4 class="ship">お届け先</h4>
+					<div>
+						<%= f.radio_button :ship, "customer_address", checked: true %>
+						<%= f.label :ship, "ご自身の住所" %>
+						<div style="color:#0000FF">
+							<%= current_customer.postal_code %><%= current_customer.address %><br>
+							<%= current_customer.last_name %><%= current_customer.first_name %>
+						</div>
+					</div>
+					<% if current_customer.ships.exists? %>
+						<%= f.radio_button :ship, "registrated_address" %>
+						<%= f.label :ship, "登録済住所から選択" %>
+						<div style="color:#0000FF">
+							<%= f.collection_select :customer_ship, current_customer.ships, :id, :full_address %>
+						</div>
+					<% end %>
+
+					<%= f.radio_button :ship, "new_address" %>
+					<%= f.label :ship, "新しいお届け先" %><br>
+
+						<div style="display: inline-flex;"><div>郵便番号ハイフンなし）　</div><%= f.text_field :shipping_postal_code %></div><br>
+						<div style="display: inline-flex;"><div>住所　　　　　　　　　　</div><%= f.text_field :shipping_address %></div><br>
+						<div style="display: inline-flex;"><div>宛名　　　　　　　　　　</div><%= f.text_field :shipping_name %></div>
+			</div>
+
+			<div class="nextgamen">
+				<%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
 			</div>
 
 		<% end %>
-		<div>
-		<%= f.radio_button :ship, "new_address" %>
-		<%= f.label :ship, "新しいお届け先" %>
-			<div style="display: inline-flex;"><div>郵便番号(ハイフンなし)</div><%= f.text_field :shipping_postal_code %></div><br>
-			<div style="display: inline-flex;"><div>住所</div><%= f.text_field :shipping_address %></div><br>
-			<div style="display: inline-flex;"><div>宛名</div><%= f.text_field :shipping_name %></div>
-			<%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
 
-		</div>
-	<% end %>
+	</div>
 </div>

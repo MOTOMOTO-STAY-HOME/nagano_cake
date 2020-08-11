@@ -15,6 +15,7 @@ class Admins::CustomersController < Admins::ApplicationController
     @customer = Customer.find(params[:id])
     if @customer.update(admins_customer_params)
       redirect_to admins_customer_path(@customer.id)
+      flash[:notice] = "会員情報を更新しました。"
     else
       render "edit"
     end
@@ -22,7 +23,7 @@ class Admins::CustomersController < Admins::ApplicationController
 
 private
 def admins_customer_params
-  params.require(:customer).permit(:last_name, :first_name, :kana_last_name, :kana_first_name, :email, :address, :phone, :is_active)
+  params.require(:customer).permit(:last_name, :first_name, :kana_last_name, :kana_first_name, :email, :address, :phone, :is_active, :postal_code)
 end
 
 end
