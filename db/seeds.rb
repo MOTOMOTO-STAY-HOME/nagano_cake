@@ -18,14 +18,27 @@ Customer.create!(
   kana_first_name: "タロウ",
   email: "test@test.com",
   password: "testtest",
-  postal_code: "1910022",
-  address: "テスト県てすと市",
-  phone: "09011992277",
+  postal_code: "1234567",
+  address: "1234567",
+  phone: "12345678912",
   is_active: "true",
 )
 ProductGenre.create!(
-  name: "tesuto"
+  name: "ケーキ"
 )
+
+ProductGenre.create!(
+  name: "プリン"
+)
+
+ProductGenre.create!(
+  name: "焼き菓子"
+)
+
+ProductGenre.create!(
+  name: "キャンディ"
+)
+
 Product.create!(
   name: "test_cake",
   discription: "koreha_tesuto_cake",
@@ -70,6 +83,7 @@ OrderProduct.create!(
 )
 
 
+<<<<<<< HEAD
 Customer.create!(
 	last_name: "user",
 	first_name: "1",
@@ -98,3 +112,5 @@ CartProduct.create!(
     product_id: 1,
     quantity: 1
     )
+=======
+>>>>>>> 0d01ca81b6396dd2b7e928068eeb21a2617b6fa0
