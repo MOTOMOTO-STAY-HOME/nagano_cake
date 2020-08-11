@@ -9,7 +9,7 @@
 			<table border="1" style="width: 500px;">
 				<tr>
 					<td style="padding: 5px;">注文日</td>
-					<td style="padding: 5px;"><%= l @order.created_at %></td>
+					<td style="padding: 5px;"><%= l(@order.created_at, format: :short) %></td>
 				</tr>
 				<tr>
 					<td style="padding: 5px;">配送先</td>
