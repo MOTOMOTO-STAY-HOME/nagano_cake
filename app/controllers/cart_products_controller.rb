@@ -1,12 +1,23 @@
 class CartProductsController < ApplicationController
-
 	before_action :authenticate_customer!
+	before_action :ensure_correct_customer, only:[:destroy]
 
 	def create
-			@cart_product = current_customer.cart_products.new(cart_product_params)
-		if 	@cart_product.save
-			flash[:success] = "カートに入りました。"
-			redirect_to cart_products_path
+		@product = Product.find(params[:cart_product][:product_id])
+		@customer_cart_products = current_customer.cart_products.pluck(:product_id)
+		unless params[:cart_product][:quantity] == ""
+			if @customer_cart_products.include?(@product.id)
+				@cart_product = CartProduct.find_by(customer_id: current_customer.id, product_id: @product.id)
+				@cart_product.quantity += params[:cart_product][:quantity].to_i
+				@cart_product.save
+				flash[:success]="カートに追加されました。"
+				redirect_to cart_products_path
+			else
+				@cart_product = current_customer.cart_products.new(cart_product_params)
+				@cart_product.save
+				flash[:success] = "カートに入りました。"
+				redirect_to cart_products_path
+			end
 		else
 			redirect_back(fallback_location: root_url)
 		end
@@ -43,5 +54,12 @@ class CartProductsController < ApplicationController
 	private
 	def cart_product_params
 		params.require(:cart_product).permit(:customer_id, :product_id, :quantity)
+	end
+
+	def correct_customer
+		@cart_product =CartProduct.find(params[:id])
+		unless @cart_product.id == current_costomer.id
+			redirect_back(fallback_location: root_url)
+		end
 	end
 end
