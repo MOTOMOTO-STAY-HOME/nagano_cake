@@ -56,9 +56,9 @@ class CartProductsController < ApplicationController
 		params.require(:cart_product).permit(:customer_id, :product_id, :quantity)
 	end
 
-	def correct_customer
+	def ensure_correct_customer
 		@cart_product =CartProduct.find(params[:id])
-		unless @cart_product.id == current_costomer.id
+		unless @cart_product.id == current_customer.id
 			redirect_back(fallback_location: root_url)
 		end
 	end

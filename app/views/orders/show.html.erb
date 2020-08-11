@@ -35,15 +35,15 @@
 			<table border="1" style="width: 200px;">
 				<tr>
 					<td style="padding: 5px;">商品合計</td>
-					<td style="padding: 5px;"><%= @order.total_price %></td>
+					<td style="padding: 5px;"><%= @order.total_price.to_s(:delimited) %></td>
 				</tr>
 				<tr>
 					<td style="padding: 5px;">配送料</td>
-					<td style="padding: 5px;"><%= @order.postages_price %></td>
+					<td style="padding: 5px;"><%= @order.postages_price.to_s(:delimited) %></td>
 				</tr>
 				<tr>
 					<td style="padding: 5px;">ご請求額</td>
-					<td style="padding: 5px;"><%= @order.amount_price %></td>
+					<td style="padding: 5px;"><%= @order.amount_price.to_s(:delimited) %></td>
 				</tr>
 			</table>
 		</div>
@@ -61,9 +61,9 @@
 				<% @order.order_products.each do |order_product| %>
 			<tr>
 				<td style="padding: 5px;"><%= order_product.product.name %></td>
-				<td style="padding: 5px;"><%= order_product.include_tax_unit_price %></td>
+				<td style="padding: 5px;"><%= order_product.include_tax_unit_price.to_s(:delimited) %></td>
 				<td style="padding: 5px;"><%= order_product.quantity %></td>
-				<td style="padding: 5px;"><%= order_product.include_tax_total_price %></td>
+				<td style="padding: 5px;"><%= order_product.include_tax_total_price.to_s(:delimited) %></td>
 			</tr>
 			<% end %>
 		</table>
