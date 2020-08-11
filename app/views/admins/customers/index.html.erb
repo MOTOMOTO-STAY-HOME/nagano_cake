@@ -13,7 +13,7 @@
         <td>
           <%= c.id %>
         </td>
-        <td>
+        <td class="under">
           <%= link_to admins_customer_path(c) do %>
           <%= c.full_name%>
           <% end %>
@@ -22,7 +22,11 @@
           <%= c.email %>
         </td>
         <td>
-          <%= c.is_active%>
+          <% if c.is_active ==true %>
+           有効
+          <% else %>
+           退会済み
+          <% end %>
         </td>
       </tr>
       <% end %>
