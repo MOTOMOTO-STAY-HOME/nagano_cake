@@ -52,13 +52,13 @@
 			<th>個数</th>
 			<th>小計</th>
 		</tr>
-			<% @order.order_products.each do |order_product| %>
-		<tr>
-			<td><%= order_product.product.name %></td>
-			<td><%= order_product.include_tax_unit_price %></td>
-			<td><%= order_product.quantity %></td>
-			<td><%= order_product.include_tax_total_price %></td>
-		</tr>
+		<% @order.order_products.each do |order_product| %>
+			<tr>
+				<td><%= order_product.product.name %></td>
+				<td><%= order_product.include_tax_unit_price %></td>
+				<td><%= order_product.quantity %></td>
+				<td><%= order_product.include_tax_total_price %></td>
+			</tr>
 		<% end %>
 	</table>
 </div>
