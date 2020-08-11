@@ -10,11 +10,8 @@ class Admins::OrderProductsController < Admins::ApplicationController
             @order.order_status =  "製作中"
             @order.save
           end
-          # @production_statuses = @order_product.production_status
           @order.order_products.each do |product|
           if product.production_status == "製作完了"
-          # case @production_statuses.all?{|n|n==3}
-          # when "製作完了" then
             @order.order_status = "発送準備中"
             @order.save
           else

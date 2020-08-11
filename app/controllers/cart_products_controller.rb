@@ -27,13 +27,13 @@ class CartProductsController < ApplicationController
 		@cart_products = CartProduct.where(customer_id: current_customer.id).page(params[:page]).reverse_order
 		@total_price =0
 		@cart_products.each do |cart_product|
-			@total_price += cart_product.include_tax_total_price
+		@total_price += cart_product.include_tax_total_price
 		end
 	end
 
 	def update
-		@cart_product = CartProduct.find(params[:id])
-		if @cart_product.update(cart_product_params)
+			@cart_product = CartProduct.find(params[:id])
+		if 	@cart_product.update(cart_product_params)
 			flash[:success] = "個数を変更しました。"
 			redirect_to cart_products_path
 		end
